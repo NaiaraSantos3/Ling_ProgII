@@ -1,0 +1,47 @@
+public class Banco {
+
+    private int idBanco;
+    private String nomeBanco;
+    private String cnpj;
+    private String idLeilao;
+
+    public Cliente(int idBanco, String nomeBanco, String cnpj, String idLeilao) {
+        this.idBanco = idBanco;
+        this.nomeBanco = nomeBanco;
+        this.email = email;
+        this.cnpj = cnpj;
+        this.idLeilao = idLeilao;
+    }
+
+    public int getIdBanco() {
+        return idBanco;
+    }
+
+    public void setIdBanco(int idBanco) {
+        this.idBanco = idBanco;
+    }
+
+    public String getNomeBanco() {
+        return nomeBanco;
+    }
+
+    public void setNomeBanco(String nomeBanco) {
+        this.nome = nome;
+    }
+
+    public String getCnpj() {
+        return cpf;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public String getIdLeilao() {
+        return idLeilao;
+    }
+
+    public void setIdLeilao(String idLeilao) {
+        this.email = idLeilao;
+    }
+}

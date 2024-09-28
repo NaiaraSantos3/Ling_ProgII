@@ -1,0 +1,48 @@
+public class Leilao {
+
+    private int idLeilao;
+    private LocalDate dataLeilao;
+    private String localLeilao;
+    private String statusLeilao;
+
+    public Leilao (int idLeilao, LocalDate dataLeilao, String localLeilao, String statusLeilao) {
+        this.idLeilao = idLeilao;
+        this.dataLeilao = dataLeilao;
+        this.localLeilao = localLeilao;
+        this.statusLeilao = statusLeilao;
+        
+    }
+
+    public int getIdLeilao(){
+        return idLeilao;
+    }
+
+    public void setIdLeilao(int idLeilao){
+        this.idLeilao = idLeilao;
+    }
+
+    public LocalDate getDataLeilao(){
+        return dataLeilao;
+    }
+
+    public void setDataLeilao(LocalDate dataLeilao){
+        this.dataLeilao = dataLeilao;
+    }
+
+    public String getLocalLeilao(){
+        return localLeilao;
+    }
+
+    public void setLocalLeilao(String localLeilao){
+        this.localLeilao = localLeilao;
+    }
+
+    public String getStatusLeilao(){
+        return statusLeilao;
+    }
+
+    public void setStatusLeilao(String statusLeilao;){
+        this.statusLeilao = statusLeilao;
+    }
+
+}
