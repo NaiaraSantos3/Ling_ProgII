@@ -1,16 +1,21 @@
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+
+@Entity
 public class Banco {
-
-    private int idBanco;
+    @Id
+    @GeneratedValue
+    private int idBanco; 
     private String nomeBanco;
-    private String cnpj;
-    private String idLeilao;
+    private String cnpjBanco;
+    private String codigoBanco; //se refere ao código do banco
 
-    public Cliente(int idBanco, String nomeBanco, String cnpj, String idLeilao) {
-        this.idBanco = idBanco;
+    public Banco (int idBanco, String nomeBanco, String cnpjBanco, String codigoBanco) {
+        this.idBanco = idBanco; 
         this.nomeBanco = nomeBanco;
-        this.email = email;
-        this.cnpj = cnpj;
-        this.idLeilao = idLeilao;
+        this.cnpjBanco = cnpjBanco;
+        this.codigoBanco = codigoBanco;
     }
 
     public int getIdBanco() {
@@ -26,22 +31,22 @@ public class Banco {
     }
 
     public void setNomeBanco(String nomeBanco) {
-        this.nome = nome;
+        this.nomeBanco = nomeBanco;
     }
 
-    public String getCnpj() {
-        return cpf;
+    public String getCnpjBanco() {
+        return cnpjBanco;
     }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setCnpjBanco(String cnpjBanco) {
+        this.cnpjBanco = cnpjBanco;
     }
 
-    public String getIdLeilao() {
-        return idLeilao;
+    public String getCodigoBanco(){
+        return codigoBanco;
     }
 
-    public void setIdLeilao(String idLeilao) {
-        this.email = idLeilao;
+    public void setCodigoBanco(String codigoBanco){
+        this.codigoBanco = codigoBanco;
     }
 }

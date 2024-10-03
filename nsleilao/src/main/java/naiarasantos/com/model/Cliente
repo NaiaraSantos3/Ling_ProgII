@@ -1,16 +1,25 @@
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+
+@Entity
 public class Cliente {
-
+    @Id
+    @GeneratedValue
     private int idCliente;
-    private String nomeCliente;
-    private String email;
     private String cpf;
+    private String nomeCliente;
+    private Date dataNascimentoCliente; 
+    private String email;
+    private String telefone;
 
-
-    public Cliente(int idCliente, String nomeCliente, String email, String cpf) {
+    public Cliente(int idCliente, String cpf, String nomeCliente, Date dataNascimentoCliente ,String email,  String telefone) {
         this.idCliente = idCliente;
-        this.nome = nome;
-        this.email = email;
         this.cpf = cpf;
+        this.nomeCliente = nomeCliente;
+        this.dataNascimentoCliente = dataNascimentoCliente;
+        this.email = email;        
+        this.telefone = telefone;
     }
 
     public int getIdCliente() {
@@ -20,13 +29,29 @@ public class Cliente {
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
-
-    public String getNomeCliente() {
-        return nome;
+    
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setNomeCliente(String nome) {
-        this.nome = nome;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
+    }
+
+    public Date getDataNascimentoCliente(){
+        return dataNascimentoCliente;
+    }
+
+    public void setDataNascimentoCliente(Date dataNascimentoCliente){
+        this.dataNascimentoCliente;
     }
 
     public String getEmail() {
@@ -37,12 +62,11 @@ public class Cliente {
         this.email = email;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getTelefone(){
+        return telefone;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setTelefone(String telefone){
+        this.telefone = telefone;
     }
-
 }
