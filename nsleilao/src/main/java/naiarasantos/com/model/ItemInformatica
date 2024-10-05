@@ -4,19 +4,16 @@ import jakarta.persistence.GeneratedValue;
 
 @Entity
 public class ItemInformatica extends Produto{
-    
     private String modeloInformatica; 
     private String marcaInformatica;
-    private String tipoInformatica;
     private String numeroSerie;
     
-    public ItemInformatica (int idProduto, String nomeProduto, String tipoProduto, String descricaoProduto, 
+    public ItemInformatica (int idProduto, String tipoProduto, String descricaoProduto, 
     Double valorInicialProduto, String modeloInformatica, String marcaInformatica, String tipoInformatica, 
     String numeroSerie){
-        super (idProduto, nomeProduto, tipoProduto, descricaoProduto, valorInicialProduto);
+        super (idProduto, tipoProduto, descricaoProduto, valorInicialProduto);
         this.modeloInformatica = modeloInformatica;
         this.marcaInformatica = marcaInformatica;
-        this.tipoInformatica = tipoInformatica;
         this.numeroSerie = numeroSerie;
     }
 
@@ -34,14 +31,6 @@ public class ItemInformatica extends Produto{
 
     public void setMarcaInformatica (String marcaInformatica){
         this.marcaInformatica = marcaInformatica;
-    }
-
-    public String getTipoInformatica(){
-        return tipoInformatica;
-    }
-
-    public void setTipoInformatica(){
-        this.tipoInformatica = tipoInformatica;
     }
     
     public String getNumeroSerie(){
