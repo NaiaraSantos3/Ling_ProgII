@@ -3,13 +3,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 
 public class ItemVeiculo extends Produto{
-    @Override
-    private String tipoVeiculo;
-    private String modeloVeiculo;
-    private String fabricanteVeiculo;
-    private int anoVeiculo;
-    private String placaVeiculo;
-    private String chassi;
 
     public ItemVeiculo (int idProduto, String nomeProduto, String tipoProduto, String descricaoProduto, 
     Double valorInicialProduto, String tipoVeiculo, String modeloVeiculo,String fabricanteVeiculo, 
