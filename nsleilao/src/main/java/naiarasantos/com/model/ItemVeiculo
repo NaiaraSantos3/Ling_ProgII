@@ -2,8 +2,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 
+@Entity
 public class ItemVeiculo extends Produto{
-
+    @Id
+    @GeneratedValue
+    private String tipoVeiculo;
+    private String modeloVeiculo;
+    private String fabricanteVeiculo;
+    private int anoVeiculo;
+    private String placaVeiculo;
+    private String chassi;  
+    
     public ItemVeiculo (int idProduto, String nomeProduto, String tipoProduto, String descricaoProduto, 
     Double valorInicialProduto, String tipoVeiculo, String modeloVeiculo,String fabricanteVeiculo, 
     int anoVeiculo,String placaVeiculo,String chassi){
@@ -14,8 +23,6 @@ public class ItemVeiculo extends Produto{
         this.anoVeiculo = anoVeiculo; 
         this.placaVeiculo = placaVeiculo;
         this.chassi = chassi;
-
-
     }
  
     public String getTipoVeiculo(){

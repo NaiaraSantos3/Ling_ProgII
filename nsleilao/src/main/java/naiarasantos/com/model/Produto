@@ -13,7 +13,7 @@ public class Produto {
     private Double valorInicialProduto;
 
 
-    public Produto(int idProduto, String nomeProduto, String tipoProduto, String descricaoProduto, 
+    public Produto (int idProduto, String nomeProduto, String tipoProduto, String descricaoProduto, 
     Double valorInicialProduto) {
         this.idProduto = idProduto;
         this.nomeProduto = nomeProduto;
