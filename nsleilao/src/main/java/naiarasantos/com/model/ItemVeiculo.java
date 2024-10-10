@@ -1,3 +1,5 @@
+package naiarasantos.com.model;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -12,10 +14,10 @@ public class ItemVeiculo extends Produto{
     private String placaVeiculo;
     private String chassi;  
     
-    public ItemVeiculo (int idProduto, String tipoProduto, String descricaoProduto, 
+    public ItemVeiculo (int idProduto, String nomeProduto, String tipoProduto, String descricaoProduto, 
     Double valorInicialProduto, String tipoVeiculo, String modeloVeiculo,String fabricanteVeiculo, 
     int anoVeiculo,String placaVeiculo,String chassi){
-        super (idProduto, tipoProduto, descricaoProduto, valorInicialProduto); 
+        super (idProduto, nomeProduto, tipoProduto, descricaoProduto, valorInicialProduto); 
         this.modeloVeiculo = modeloVeiculo;
         this.fabricanteVeiculo = fabricanteVeiculo;
         this.anoVeiculo = anoVeiculo; 

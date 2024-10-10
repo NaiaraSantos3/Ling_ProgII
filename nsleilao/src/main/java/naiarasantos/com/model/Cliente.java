@@ -1,6 +1,9 @@
+package naiarasantos.com.model;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
+import java.time.LocalDate;
 
 @Entity
 public class Cliente {
@@ -9,11 +12,11 @@ public class Cliente {
     private int idCliente;
     private String cpf;
     private String nomeCliente;
-    private Date dataNascimentoCliente; 
+    private LocalDate dataNascimentoCliente; 
     private String email;
     private String telefone;
 
-    public Cliente(int idCliente, String cpf, String nomeCliente, Date dataNascimentoCliente ,String email,  String telefone) {
+    public Cliente(int idCliente, String cpf, String nomeCliente, LocalDate dataNascimentoCliente ,String email,  String telefone) {
         this.idCliente = idCliente;
         this.cpf = cpf;
         this.nomeCliente = nomeCliente;
@@ -46,12 +49,12 @@ public class Cliente {
         this.nomeCliente = nomeCliente;
     }
 
-    public Date getDataNascimentoCliente(){
+    public LocalDate getDataNascimentoCliente(){
         return dataNascimentoCliente;
     }
 
-    public void setDataNascimentoCliente(Date dataNascimentoCliente){
-        this.dataNascimentoCliente;
+    public void setDataNascimentoCliente(LocalDate dataNascimentoCliente){
+        this.dataNascimentoCliente = dataNascimentoCliente;
     }
 
     public String getEmail() {

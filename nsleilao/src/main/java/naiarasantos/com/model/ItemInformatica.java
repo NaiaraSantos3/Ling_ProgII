@@ -1,17 +1,20 @@
+package naiarasantos.com.model;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
 @Entity
-public class ItemInformatica extends Produto{
+public class ItemInformatica extends Produto {
+    @Id
+    @GeneratedValue
     private String modeloInformatica; 
     private String marcaInformatica;
     private String numeroSerie;
     
-    public ItemInformatica (int idProduto, String tipoProduto, String descricaoProduto, 
-    Double valorInicialProduto, String modeloInformatica, String marcaInformatica, String tipoInformatica, 
-    String numeroSerie){
-        super (idProduto, tipoProduto, descricaoProduto, valorInicialProduto);
+    public ItemInformatica (int idProduto, String nomeProduto, String tipoProduto, String descricaoProduto, 
+    Double valorInicialProduto, String modeloInformatica, String marcaInformatica, String numeroSerie){ // Removido o parâmetro tipoInformatica
+        super(idProduto, nomeProduto, tipoProduto, descricaoProduto, valorInicialProduto);
         this.modeloInformatica = modeloInformatica;
         this.marcaInformatica = marcaInformatica;
         this.numeroSerie = numeroSerie;
@@ -29,7 +32,7 @@ public class ItemInformatica extends Produto{
         return marcaInformatica;
     }
 
-    public void setMarcaInformatica (String marcaInformatica){
+    public void setMarcaInformatica(String marcaInformatica){
         this.marcaInformatica = marcaInformatica;
     }
     
@@ -40,5 +43,4 @@ public class ItemInformatica extends Produto{
     public void setNumeroSerie(String numeroSerie){
         this.numeroSerie = numeroSerie;
     }
-
 }

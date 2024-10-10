@@ -1,20 +1,25 @@
+package naiarasantos.com.model;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
+
 
 @Entity
 public class Produto {
     @Id
     @GeneratedValue
     private int idProduto;
+    private String nomeProduto;
     private String tipoProduto;
     private String descricaoProduto;
     private Double valorInicialProduto;
 
 
-    public Produto (int idProduto, String tipoProduto, String descricaoProduto, 
+    public Produto (int idProduto, String nomeProduto, String tipoProduto, String descricaoProduto, 
     Double valorInicialProduto) {
         this.idProduto = idProduto;
+        this.nomeProduto = nomeProduto;
         this.tipoProduto = tipoProduto;
         this.descricaoProduto = descricaoProduto;
         this.valorInicialProduto = valorInicialProduto;
@@ -32,7 +37,7 @@ public class Produto {
         return nomeProduto;
     }
 
-    public void setNomeProduto(String nomeProduto;){
+    public void setNomeProduto(String nomeProduto){
         this.nomeProduto = nomeProduto;
     }
 
