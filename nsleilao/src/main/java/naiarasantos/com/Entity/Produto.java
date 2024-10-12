@@ -2,6 +2,7 @@ package naiarasantos.com.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import naiarasantos.com.Dto.ProdutoDto;
 import jakarta.persistence.GeneratedValue;
 
 
@@ -64,6 +65,16 @@ public class Produto {
     
     public void setValorInicialProduto(Double valorInicialProduto){
         this.valorInicialProduto = valorInicialProduto;
+    }
+
+    public ProdutoDto produtoDto(){
+        ProdutoDto produtoDto = new ProdutoDto();
+        produtoDto.setIdProduto(this.idProduto);
+        produtoDto.setNomeProduto(this.nomeProduto);
+        produtoDto.setTipoProduto(this.tipoProduto);
+        produtoDto.setDescricaoProduto(this.descricaoProduto);
+        produtoDto.setValorInicialProduto(this.valorInicialProduto);
+        return produtoDto;
     }
     
 }

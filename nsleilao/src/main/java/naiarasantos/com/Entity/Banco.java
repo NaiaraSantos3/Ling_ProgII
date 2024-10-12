@@ -13,7 +13,7 @@ public class Banco {
     private String nomeBanco;
     private String cnpjBanco;
     private String codigoBanco; 
-    
+
     public Banco (int idBanco, String nomeBanco, String cnpjBanco, String codigoBanco) {
         this.idBanco = idBanco; 
         this.nomeBanco = nomeBanco;
@@ -54,7 +54,7 @@ public class Banco {
     }
 
         public BancoDto bancoDto() {
-        BancoDto bancoDto =new BancoDto();
+        BancoDto bancoDto = new BancoDto();
         bancoDto.setIdBanco(this.idBanco);
         bancoDto.setNomeBanco(this.nomeBanco);
         bancoDto.setCnpjBanco(this.cnpjBanco);
