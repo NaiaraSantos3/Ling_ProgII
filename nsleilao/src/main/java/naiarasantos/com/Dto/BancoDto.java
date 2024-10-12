@@ -15,7 +15,6 @@ public class BancoDto {
         this.codigoBanco = codigoBanco;
     }
 
-    // Getters e Setters
     public int getIdBanco() {
         return idBanco;
     }

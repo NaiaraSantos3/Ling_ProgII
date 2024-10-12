@@ -1,31 +1,24 @@
-package naiarasantos.com.Entity;
+package naiarasantos.com.Dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import naiarasantos.com.Dto.LeilaoDto;
 import java.time.LocalDate;
 
-@Entity
-public class Leilao {
-    @Id
-    @GeneratedValue
+public class LeilaoDto {
+
     private int idLeilao;
     private LocalDate dataAberturaLeilao;
     private LocalDate dataEncerramentoLeilao;
     private LocalDate dataVisitaProduto;
     private String siteLeilao;
-    private String enderecoFisicoLeilao;
+    private String enderecoFisicoLeilao; 
     private String cidadeLeilao;
     private String estadoLeilao;
     private String statusLeilao;
 
+    public LeilaoDto() {}
 
-    public Leilao() {}
-
-    public Leilao(int idLeilao, LocalDate dataAberturaLeilao, LocalDate dataEncerramentoLeilao,
-                  LocalDate dataVisitaProduto, String siteLeilao, String enderecoFisicoLeilao, 
-                  String cidadeLeilao, String estadoLeilao, String statusLeilao) {
+    public LeilaoDto(int idLeilao, LocalDate dataAberturaLeilao, LocalDate dataEncerramentoLeilao, 
+                     LocalDate dataVisitaProduto, String siteLeilao, String enderecoFisicoLeilao, 
+                     String cidadeLeilao, String estadoLeilao, String statusLeilao) {
         this.idLeilao = idLeilao;
         this.dataAberturaLeilao = dataAberturaLeilao;
         this.dataEncerramentoLeilao = dataEncerramentoLeilao;
@@ -34,7 +27,7 @@ public class Leilao {
         this.enderecoFisicoLeilao = enderecoFisicoLeilao;
         this.cidadeLeilao = cidadeLeilao;
         this.estadoLeilao = estadoLeilao;
-        this.statusLeilao = statusLeilao;
+        this.statusLeilao = statusLeilao;   
     }
 
     public int getIdLeilao() {
@@ -107,20 +100,5 @@ public class Leilao {
 
     public void setStatusLeilao(String statusLeilao) {
         this.statusLeilao = statusLeilao;
-    }
-
-  
-    public LeilaoDto leilaoDto() {
-        LeilaoDto leilaoDto = new LeilaoDto();
-        leilaoDto.setIdLeilao(this.idLeilao);
-        leilaoDto.setDataAberturaLeilao(this.dataAberturaLeilao);
-        leilaoDto.setDataEncerramentoLeilao(this.dataEncerramentoLeilao);
-        leilaoDto.setDataVisitaProduto(this.dataVisitaProduto);
-        leilaoDto.setSiteLeilao(this.siteLeilao);
-        leilaoDto.setEnderecoFisicoLeilao(this.enderecoFisicoLeilao);
-        leilaoDto.setCidadeLeilao(this.cidadeLeilao);
-        leilaoDto.setEstadoLeilao(this.estadoLeilao);
-        leilaoDto.setStatusLeilao(this.statusLeilao);
-        return leilaoDto;
     }
 }

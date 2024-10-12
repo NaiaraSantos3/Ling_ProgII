@@ -12,8 +12,8 @@ public class Banco {
     private int idBanco; 
     private String nomeBanco;
     private String cnpjBanco;
-    private String codigoBanco; //se refere ao código do banco
-
+    private String codigoBanco; 
+    
     public Banco (int idBanco, String nomeBanco, String cnpjBanco, String codigoBanco) {
         this.idBanco = idBanco; 
         this.nomeBanco = nomeBanco;
