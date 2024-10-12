@@ -1,25 +1,21 @@
-package naiarasantos.com.model;
+package naiarasantos.com.Dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-
-@Entity
-public class Banco {
-    @Id
-    @GeneratedValue
-    private int idBanco; 
+public class BancoDto {
+    private int idBanco;
     private String nomeBanco;
     private String cnpjBanco;
-    private String codigoBanco; //se refere ao código do banco
+    private String codigoBanco;
 
-    public Banco (int idBanco, String nomeBanco, String cnpjBanco, String codigoBanco) {
-        this.idBanco = idBanco; 
+    public BancoDto() {}
+
+    public BancoDto(int idBanco, String nomeBanco, String cnpjBanco, String codigoBanco) {
+        this.idBanco = idBanco;
         this.nomeBanco = nomeBanco;
         this.cnpjBanco = cnpjBanco;
         this.codigoBanco = codigoBanco;
     }
 
+    // Getters e Setters
     public int getIdBanco() {
         return idBanco;
     }
@@ -44,11 +40,11 @@ public class Banco {
         this.cnpjBanco = cnpjBanco;
     }
 
-    public String getCodigoBanco(){
+    public String getCodigoBanco() {
         return codigoBanco;
     }
 
-    public void setCodigoBanco(String codigoBanco){
+    public void setCodigoBanco(String codigoBanco) {
         this.codigoBanco = codigoBanco;
     }
 }

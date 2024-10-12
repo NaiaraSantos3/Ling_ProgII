@@ -1,11 +1,12 @@
 package naiarasantos.com.Repository;
 
 import java.util.List;
-import naiarasantos.com.model.Produto;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import naiarasantos.com.Entity.Produto;
 
 @ApplicationScoped
 public class ProdutoRepository {

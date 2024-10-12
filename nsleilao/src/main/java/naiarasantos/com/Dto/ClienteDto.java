@@ -1,38 +1,24 @@
-package naiarasantos.com.model;
+package naiarasantos.com.Dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
 import java.time.LocalDate;
 
-@Entity
-public class Cliente {
-    @Id
-    @GeneratedValue
-    private int idCliente;
+public class ClienteDto {
     private String cpf;
     private String nomeCliente;
-    private LocalDate dataNascimentoCliente; 
+    private LocalDate dataNascimentoCliente;
     private String email;
     private String telefone;
 
-    public Cliente(int idCliente, String cpf, String nomeCliente, LocalDate dataNascimentoCliente ,String email,  String telefone) {
-        this.idCliente = idCliente;
+    public ClienteDto() {}
+
+    public ClienteDto(String cpf, String nomeCliente, LocalDate dataNascimentoCliente, String email, String telefone) {
         this.cpf = cpf;
         this.nomeCliente = nomeCliente;
         this.dataNascimentoCliente = dataNascimentoCliente;
-        this.email = email;        
+        this.email = email;
         this.telefone = telefone;
     }
 
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
-    
     public String getCpf() {
         return cpf;
     }
@@ -49,11 +35,11 @@ public class Cliente {
         this.nomeCliente = nomeCliente;
     }
 
-    public LocalDate getDataNascimentoCliente(){
+    public LocalDate getDataNascimentoCliente() {
         return dataNascimentoCliente;
     }
 
-    public void setDataNascimentoCliente(LocalDate dataNascimentoCliente){
+    public void setDataNascimentoCliente(LocalDate dataNascimentoCliente) {
         this.dataNascimentoCliente = dataNascimentoCliente;
     }
 
@@ -65,11 +51,11 @@ public class Cliente {
         this.email = email;
     }
 
-    public String getTelefone(){
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone){
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 }

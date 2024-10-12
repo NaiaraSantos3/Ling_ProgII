@@ -1,4 +1,4 @@
-package naiarasantos.com.model;
+package naiarasantos.com.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
