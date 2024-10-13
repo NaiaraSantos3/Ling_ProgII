@@ -24,12 +24,13 @@ public class ProdutoRepository {
     }
 
     public List<Produto> ExibeProdutos() {
-        return em.createQuery("SELECT p FROM Produto p", Produto.class).getResultList();
+        return em.createQuery("SELECT p FROM Produto p", 
+        Produto.class).getResultList();
     }
 
     @Transactional
     public void atualizar(Produto produto) {
-        em.merge(produto); // Use merge instead of persist for updates
+        em.merge(produto); 
     }
 
     @Transactional
@@ -41,12 +42,10 @@ public class ProdutoRepository {
     }
 
     public void cadastrarProduto(Produto produto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'cadastrarProduto'");
+        throw new UnsupportedOperationException("Método'cadastrarProduto' não implementado");
     }
 
     public void atualizarProduto(Produto produtoExistente) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atualizarProduto'");
+        throw new UnsupportedOperationException("Méthodo'atualizarProduto' não implementado");
     }
 }

@@ -24,7 +24,8 @@ public class LanceRepository {
     }
 
     public List<Lance> listarTodosLances() {
-        return em.createQuery("SELECT l FROM Lance l", Lance.class).getResultList();
+        return em.createQuery("SELECT l FROM Lance l", Lance.class)
+        .getResultList();
     }
 
     @Transactional

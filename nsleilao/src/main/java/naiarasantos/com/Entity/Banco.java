@@ -55,7 +55,6 @@ public class Banco {
         this.codigoBanco = codigoBanco;
     }
 
-    // Método para converter para DTO
     public BancoDto bancoDto() {
         BancoDto bancoDto = new BancoDto();
         bancoDto.setIdBanco(this.idBanco);

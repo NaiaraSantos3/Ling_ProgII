@@ -48,6 +48,6 @@ public class ItemInformatica extends Produto {
 
     public ItemInformaticaDto toItemInformaticatoDto() {
        
-        throw new UnsupportedOperationException("Unimplemented method 'toItemInformaticatoDto'");
+        throw new UnsupportedOperationException("Método 'toItemInformaticatoDto' não implementado");
     }
 }

@@ -24,7 +24,8 @@ public class ItemInformaticaRepository {
     }
 
     public List<ItemInformatica> listarTodosItens() {
-        return em.createQuery("SELECT i FROM ItemInformatica i", ItemInformatica.class).getResultList();
+        return em.createQuery("SELECT i FROM ItemInformatica i", 
+        ItemInformatica.class).getResultList();
     }
 
     @Transactional

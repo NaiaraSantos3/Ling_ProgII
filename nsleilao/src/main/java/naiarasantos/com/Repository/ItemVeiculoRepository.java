@@ -10,13 +10,11 @@ import naiarasantos.com.Entity.ItemVeiculo;
 public class ItemVeiculoRepository implements PanacheRepository<ItemVeiculo> {
 
     public Optional<ItemVeiculo> findByIdOptional(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByIdOptional'");
+        throw new UnsupportedOperationException("Método'findByIdOptional' não implementado");
     }
-    // Métodos adicionais de consulta podem ser implementados aqui, se necessário
 
     public boolean deleteById(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+
+        throw new UnsupportedOperationException("Método'deleteById' não implementado");
     }
 }

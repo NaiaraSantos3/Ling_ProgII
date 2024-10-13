@@ -24,7 +24,7 @@ public class ProdutoService {
             produtoDto.getValorInicialProduto()
         );
         produtoRepository.cadastrarProduto(produto);
-        return produto.toProdutoDto();  // Corrigido para chamar o método correto
+        return produto.toProdutoDto(); 
     }
 
     public ProdutoDto buscarProduto(int idProduto) {
@@ -32,13 +32,13 @@ public class ProdutoService {
         if (produto == null) {
             return null; 
         }
-        return produto.toProdutoDto();  // Corrigido para chamar o método correto
+        return produto.toProdutoDto();
     }
 
     public List<ProdutoDto> listarTodosProdutos() {
-        List<Produto> produtos = produtoRepository.ExibeProdutos();  // Certifique-se de que o método é camelCase
+        List<Produto> produtos = produtoRepository.ExibeProdutos(); 
         return produtos.stream()
-                .map(Produto::toProdutoDto)  // Corrigido para usar o método correto
+                .map(Produto::toProdutoDto) 
                 .collect(Collectors.toList());
     }
 
@@ -54,7 +54,7 @@ public class ProdutoService {
         produtoExistente.setValorInicialProduto(produtoDto.getValorInicialProduto());
 
         produtoRepository.atualizar(produtoExistente);
-        return produtoExistente.toProdutoDto();  // Corrigido para chamar o método correto
+        return produtoExistente.toProdutoDto();  
     }
 
     @Transactional
@@ -63,12 +63,11 @@ public class ProdutoService {
         if (produto == null) {
             return false; 
         }
-        produtoRepository.Excluir(idProduto);  // Certifique-se de que o método excluir está correto
+        produtoRepository.Excluir(idProduto);  
         return true; 
     }
 
     public Produto buscarProdutoPorId(int idProduto) {
-        // Método ainda não implementado
         throw new UnsupportedOperationException("Unimplemented method 'buscarProdutoPorId'");
     }
 }

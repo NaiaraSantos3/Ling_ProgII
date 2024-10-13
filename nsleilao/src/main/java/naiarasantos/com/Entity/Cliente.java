@@ -20,7 +20,8 @@ public class Cliente {
 
     public Cliente() {}
 
-    public Cliente(String cpf, String nomeCliente, LocalDate dataNascimentoCliente ,String email, String telefone) {
+    public Cliente(String cpf, String nomeCliente, LocalDate dataNascimentoCliente,
+                    String email, String telefone) {
         this.cpf = cpf;
         this.nomeCliente = nomeCliente;
         this.dataNascimentoCliente = dataNascimentoCliente;

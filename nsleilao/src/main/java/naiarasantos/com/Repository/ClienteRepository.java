@@ -9,6 +9,6 @@ import java.util.List;
 public class ClienteRepository implements PanacheRepository<Cliente> {
     
     public List<Cliente> findByCpf (String cpf) {
-        return list("cpf", cpf);  // Certifique-se que o nome do campo no banco de dados é 'cpf'
+        return list("cpf", cpf);
     }
 }

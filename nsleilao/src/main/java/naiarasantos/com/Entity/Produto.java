@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import naiarasantos.com.Dto.ProdutoDto;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // Estratégia de herança
-@DiscriminatorColumn(name = "tipo_produto", discriminatorType = DiscriminatorType.STRING) // Coluna que define o tipo
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) 
+@DiscriminatorColumn(name = "tipo_produto", discriminatorType = DiscriminatorType.STRING) 
 public class Produto {
 
     @Id
@@ -56,7 +56,6 @@ public class Produto {
         this.valorInicialProduto = valorInicialProduto;
     }
 
-    // Converte Produto em ProdutoDto
     public ProdutoDto toProdutoDto() {
         return new ProdutoDto(
             this.idProduto,

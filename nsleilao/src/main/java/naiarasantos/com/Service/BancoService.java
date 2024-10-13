@@ -29,9 +29,8 @@ public class BancoService {
 
     @Transactional
     public Banco updateBanco(Banco banco) {
-        // Primeiro, verificamos se o banco existe
         if (bancoRepository.findByIdBanco(banco.getIdBanco()) == null) {
-            return null; // Ou lance uma exceção, dependendo do seu caso de uso
+            return null; 
         }
         return bancoRepository.getEntityManager().merge(banco);
     }

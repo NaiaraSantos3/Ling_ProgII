@@ -12,7 +12,8 @@ public class LanceDto {
 
     public LanceDto(){}
     
-    public LanceDto(int idLance, Double valorLance, LocalDateTime dataHoraLance, String cpfCliente, int idLeilao, int idProduto) {
+    public LanceDto(int idLance, Double valorLance, LocalDateTime dataHoraLance, 
+                    String cpfCliente, int idLeilao, int idProduto) {
         this.idLance = idLance;
         this.valorLance = valorLance;
         this.dataHoraLance = dataHoraLance;
@@ -20,7 +21,6 @@ public class LanceDto {
         this.idLeilao = idLeilao;
         this.idProduto = idProduto;
     }
-
 
     public int getIdLance() {
         return idLance;

@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import naiarasantos.com.Dto.ItemVeiculoDto;
 
 @Entity
-@DiscriminatorValue("VEICULO") // Define o valor de discriminação para veículos
+@DiscriminatorValue("VEICULO") 
 public class ItemVeiculo extends Produto {
 
     private String modeloVeiculo;
@@ -14,13 +14,12 @@ public class ItemVeiculo extends Produto {
     private String placaVeiculo;
     private String chassi;
 
-    public ItemVeiculo() {
-        // Construtor padrão
-    }
+    public ItemVeiculo() {}
 
     public ItemVeiculo(String nomeProduto, String descricaoProduto, Double valorInicialProduto,
-                       String modeloVeiculo, String fabricanteVeiculo, int anoVeiculo, String placaVeiculo, String chassi) {
-        super(nomeProduto, descricaoProduto, valorInicialProduto); // Chama o construtor da classe pai
+                       String modeloVeiculo, String fabricanteVeiculo, int anoVeiculo, 
+                       String placaVeiculo, String chassi) {
+        super(nomeProduto, descricaoProduto, valorInicialProduto); 
         this.modeloVeiculo = modeloVeiculo;
         this.fabricanteVeiculo = fabricanteVeiculo;
         this.anoVeiculo = anoVeiculo;
@@ -28,7 +27,6 @@ public class ItemVeiculo extends Produto {
         this.chassi = chassi;
     }
 
-    // Getters e Setters
     public String getModeloVeiculo() {
         return modeloVeiculo;
     }
@@ -70,7 +68,7 @@ public class ItemVeiculo extends Produto {
     }
 
     public ItemVeiculoDto toItemVeiculoDto() {
-        // TODO Auto-generated method stub
+
         throw new UnsupportedOperationException("Unimplemented method 'toItemVeiculoDto'");
     }
 }

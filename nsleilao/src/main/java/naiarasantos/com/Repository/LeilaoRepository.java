@@ -24,7 +24,8 @@ public class LeilaoRepository {
     }
 
     public List<Leilao> listarTodosLeiloes() {
-        return em.createQuery("Selecione 1 para o Leilão 1", Leilao.class).getResultList();
+        return em.createQuery("Selecione 1 para o Leilão 1", 
+        Leilao.class).getResultList();
     }
 
     @Transactional

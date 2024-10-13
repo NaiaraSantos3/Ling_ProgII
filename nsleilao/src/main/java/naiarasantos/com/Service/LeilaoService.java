@@ -30,7 +30,7 @@ public class LeilaoService {
             leilaoDto.getStatusLeilao()
         );
         leilaoRepository.cadastrarLeilao(leilao);
-        return leilao.leilaoDto(); // Retorna DTO convertido
+        return leilao.leilaoDto();
     }
 
     public LeilaoDto buscarLeilao(int id) {
@@ -63,7 +63,7 @@ public class LeilaoService {
         leilaoExistente.setStatusLeilao(leilaoDto.getStatusLeilao());
 
         leilaoRepository.atualizarLeilao(leilaoExistente);
-        return leilaoExistente.leilaoDto(); // Retorna o DTO atualizado
+        return leilaoExistente.leilaoDto(); 
     }
 
     @Transactional
@@ -77,7 +77,6 @@ public class LeilaoService {
     }
 
     public Leilao buscarLeilaoPorId(int idLeilao) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarLeilaoPorId'");
+        throw new UnsupportedOperationException("Método 'buscarLeilaoPorId' não implementado");
     }
 }

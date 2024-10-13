@@ -21,7 +21,7 @@ public class ClienteService {
 
     public Cliente buscarPorCpf(String cpf) {
         List<Cliente> clientes = clienteRepository.findByCpf(cpf);
-        return clientes.isEmpty() ? null : clientes.get(0);  // Retorna o primeiro cliente ou null se não encontrado
+        return clientes.isEmpty() ? null : clientes.get(0);  
     }
 
     @Transactional

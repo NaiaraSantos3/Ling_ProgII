@@ -25,7 +25,8 @@ public class Lance {
 
     public Lance() {}
 
-    public Lance(int idLance, Double valorLance, LocalDateTime dataHoraLance, Cliente cliente, Leilao leilao, Produto produto) {
+    public Lance(int idLance, Double valorLance, LocalDateTime dataHoraLance, 
+                Cliente cliente, Leilao leilao, Produto produto) {
         this.idLance = idLance;
         this.valorLance = valorLance;
         this.dataHoraLance = dataHoraLance;
