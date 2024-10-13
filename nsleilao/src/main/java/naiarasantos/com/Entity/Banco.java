@@ -2,8 +2,8 @@ package naiarasantos.com.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import naiarasantos.com.Dto.BancoDto;
 import jakarta.persistence.GeneratedValue;
+import naiarasantos.com.Dto.BancoDto;
 
 @Entity
 public class Banco {
@@ -14,7 +14,9 @@ public class Banco {
     private String cnpjBanco;
     private String codigoBanco; 
 
-    public Banco (int idBanco, String nomeBanco, String cnpjBanco, String codigoBanco) {
+    public Banco() {}
+
+    public Banco(int idBanco, String nomeBanco, String cnpjBanco, String codigoBanco) {
         this.idBanco = idBanco; 
         this.nomeBanco = nomeBanco;
         this.cnpjBanco = cnpjBanco;
@@ -53,7 +55,8 @@ public class Banco {
         this.codigoBanco = codigoBanco;
     }
 
-        public BancoDto bancoDto() {
+    // Método para converter para DTO
+    public BancoDto bancoDto() {
         BancoDto bancoDto = new BancoDto();
         bancoDto.setIdBanco(this.idBanco);
         bancoDto.setNomeBanco(this.nomeBanco);
@@ -62,4 +65,3 @@ public class Banco {
         return bancoDto;
     }
 }
-

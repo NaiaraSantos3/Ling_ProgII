@@ -1,80 +1,68 @@
 package naiarasantos.com.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import naiarasantos.com.Dto.ProdutoDto;
-import jakarta.persistence.GeneratedValue;
-
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // Estratégia de herança
+@DiscriminatorColumn(name = "tipo_produto", discriminatorType = DiscriminatorType.STRING) // Coluna que define o tipo
 public class Produto {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idProduto;
+
     private String nomeProduto;
-    private String tipoProduto;
     private String descricaoProduto;
     private Double valorInicialProduto;
 
+    public Produto() {}
 
-    public Produto (int idProduto, String nomeProduto, String tipoProduto, String descricaoProduto, 
-    Double valorInicialProduto) {
-        this.idProduto = idProduto;
+    public Produto(String nomeProduto, String descricaoProduto, Double valorInicialProduto) {
         this.nomeProduto = nomeProduto;
-        this.tipoProduto = tipoProduto;
         this.descricaoProduto = descricaoProduto;
         this.valorInicialProduto = valorInicialProduto;
     }
 
-    public int getIdProduto(){
+    public int getIdProduto() {
         return idProduto;
     }
 
-    public void setIdProduto(int idProduto){
+    public void setIdProduto(int idProduto) {
         this.idProduto = idProduto;
     }
 
-    public String getNomeProduto(){
+    public String getNomeProduto() {
         return nomeProduto;
     }
 
-    public void setNomeProduto(String nomeProduto){
+    public void setNomeProduto(String nomeProduto) {
         this.nomeProduto = nomeProduto;
     }
 
-    public String getTipoProduto (){
-        return tipoProduto;
-    }
-
-    public void setTipoProduto(String tipoProduto){
-        this.tipoProduto = tipoProduto;
-    }
-
-    public String getDescricaoProduto(){
+    public String getDescricaoProduto() {
         return descricaoProduto;
     }
-    
-    public void setDescricaoProduto(String descricaoProduto){
-        this.descricaoProduto = descricaoProduto;
 
+    public void setDescricaoProduto(String descricaoProduto) {
+        this.descricaoProduto = descricaoProduto;
     }
 
-    public Double getValorInicialProduto(){
+    public Double getValorInicialProduto() {
         return valorInicialProduto;
-    }      
-    
-    public void setValorInicialProduto(Double valorInicialProduto){
+    }
+
+    public void setValorInicialProduto(Double valorInicialProduto) {
         this.valorInicialProduto = valorInicialProduto;
     }
 
-    public ProdutoDto produtoDto(){
-        ProdutoDto produtoDto = new ProdutoDto();
-        produtoDto.setIdProduto(this.idProduto);
-        produtoDto.setNomeProduto(this.nomeProduto);
-        produtoDto.setTipoProduto(this.tipoProduto);
-        produtoDto.setDescricaoProduto(this.descricaoProduto);
-        produtoDto.setValorInicialProduto(this.valorInicialProduto);
-        return produtoDto;
+    // Converte Produto em ProdutoDto
+    public ProdutoDto toProdutoDto() {
+        return new ProdutoDto(
+            this.idProduto,
+            this.nomeProduto,
+            this.descricaoProduto,
+            descricaoProduto, this.valorInicialProduto
+        );
     }
-    
 }

@@ -3,6 +3,7 @@ package naiarasantos.com.Dto;
 import java.time.LocalDate;
 
 public class ClienteDto {
+    private int idCliente;
     private String cpf;
     private String nomeCliente;
     private LocalDate dataNascimentoCliente;
@@ -11,12 +12,21 @@ public class ClienteDto {
 
     public ClienteDto() {}
 
-    public ClienteDto(String cpf, String nomeCliente, LocalDate dataNascimentoCliente, String email, String telefone) {
+    public ClienteDto(String cpf, String nomeCliente, LocalDate dataNascimentoCliente, 
+    String email, String telefone) {
         this.cpf = cpf;
         this.nomeCliente = nomeCliente;
         this.dataNascimentoCliente = dataNascimentoCliente;
         this.email = email;
         this.telefone = telefone;
+    }
+
+    public int getidCliente(){
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getCpf() {

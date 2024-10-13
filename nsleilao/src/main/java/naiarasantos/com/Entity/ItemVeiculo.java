@@ -1,26 +1,26 @@
 package naiarasantos.com.Entity;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import naiarasantos.com.Dto.ItemVeiculoDto;
 
 @Entity
+@DiscriminatorValue("VEICULO") // Define o valor de discriminação para veículos
 public class ItemVeiculo extends Produto {
-    @Id
-    @GeneratedValue
-    private int idVeiculo; // Definir um id próprio para o veículo ou usar o idProduto
+
     private String modeloVeiculo;
     private String fabricanteVeiculo;
     private int anoVeiculo;
     private String placaVeiculo;
     private String chassi;
-    
-    // Construtor da classe
-    public ItemVeiculo(int idProduto, String nomeProduto, String tipoProduto, String descricaoProduto,
-                       Double valorInicialProduto, String modeloVeiculo, String fabricanteVeiculo,
-                       int anoVeiculo, String placaVeiculo, String chassi) {
-        super(idProduto, nomeProduto, tipoProduto, descricaoProduto, valorInicialProduto); 
+
+    public ItemVeiculo() {
+        // Construtor padrão
+    }
+
+    public ItemVeiculo(String nomeProduto, String descricaoProduto, Double valorInicialProduto,
+                       String modeloVeiculo, String fabricanteVeiculo, int anoVeiculo, String placaVeiculo, String chassi) {
+        super(nomeProduto, descricaoProduto, valorInicialProduto); // Chama o construtor da classe pai
         this.modeloVeiculo = modeloVeiculo;
         this.fabricanteVeiculo = fabricanteVeiculo;
         this.anoVeiculo = anoVeiculo;
@@ -69,12 +69,8 @@ public class ItemVeiculo extends Produto {
         this.chassi = chassi;
     }
 
-    // Método para converter para o DTO
     public ItemVeiculoDto toItemVeiculoDto() {
-        return new ItemVeiculoDto(
-            this.getIdProduto(), this.getNomeProduto(), this.getTipoProduto(), this.getDescricaoProduto(),
-            this.getValorInicialProduto(), this.modeloVeiculo, this.fabricanteVeiculo, 
-            this.anoVeiculo, this.placaVeiculo, this.chassi
-        );
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toItemVeiculoDto'");
     }
 }

@@ -9,8 +9,9 @@ public class ItemVeiculoDto extends ProdutoDto{
     
     public ItemVeiculoDto(){}
 
-    public ItemVeiculoDto (int idProduto, String nomeProduto, String tipoProduto, String descricaoProduto, 
-    Double valorInicialProduto, String tipoVeiculo, String modeloVeiculo,String fabricanteVeiculo, 
+    public ItemVeiculoDto (int idProduto, String nomeProduto, String tipoProduto, 
+    String descricaoProduto, Double valorInicialProduto, 
+    String tipoVeiculo, String modeloVeiculo,String fabricanteVeiculo, 
     int anoVeiculo,String placaVeiculo,String chassi){
         super (idProduto, nomeProduto, tipoProduto, descricaoProduto, valorInicialProduto); 
         this.modeloVeiculo = modeloVeiculo;
@@ -20,9 +21,10 @@ public class ItemVeiculoDto extends ProdutoDto{
         this.chassi = chassi;
     }
 
-    public ItemVeiculoDto(int idProduto, String nomeProduto, String tipoProduto, String descricaoProduto,
-            Double valorInicialProduto, String modeloVeiculo2, String fabricanteVeiculo2, int anoVeiculo2,
-            String placaVeiculo2, String chassi2) {
+    public ItemVeiculoDto(int idProduto, String nomeProduto, String tipoProduto, 
+                            String descricaoProduto,Double valorInicialProduto, 
+                            String modeloVeiculo2, String fabricanteVeiculo2, 
+                            int anoVeiculo2,String placaVeiculo2, String chassi2) {
   
     }
 

@@ -39,4 +39,14 @@ public class ProdutoRepository {
             em.remove(produto);
         }
     }
+
+    public void cadastrarProduto(Produto produto) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'cadastrarProduto'");
+    }
+
+    public void atualizarProduto(Produto produtoExistente) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'atualizarProduto'");
+    }
 }

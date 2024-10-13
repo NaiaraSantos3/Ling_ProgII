@@ -7,9 +7,10 @@ public class ItemInformaticaDto extends ProdutoDto {
     
     public ItemInformaticaDto(){}
 
-    public ItemInformaticaDto(int idProduto, String nomeProduto, String tipoProduto, String descricaoProduto, 
-                              Double valorInicialProduto, String modeloInformatica, String marcaInformatica, 
-                              String numeroSerie) { 
+    public ItemInformaticaDto(int idProduto, String nomeProduto, String tipoProduto, 
+                            String descricaoProduto, Double valorInicialProduto, 
+                            String modeloInformatica, String marcaInformatica, 
+                            String numeroSerie) { 
         super(idProduto, nomeProduto, tipoProduto, descricaoProduto, valorInicialProduto);
         this.modeloInformatica = modeloInformatica;
         this.marcaInformatica = marcaInformatica;

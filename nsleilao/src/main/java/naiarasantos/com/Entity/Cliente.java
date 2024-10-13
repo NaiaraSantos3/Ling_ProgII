@@ -1,13 +1,17 @@
 package naiarasantos.com.Entity;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import naiarasantos.com.Dto.ClienteDto;
-import java.time.LocalDate;
 
 @Entity
 public class Cliente {
     @Id
+    @GeneratedValue
+    private int idCliente;
     private String cpf;
     private String nomeCliente;
     private LocalDate dataNascimentoCliente;
@@ -22,6 +26,14 @@ public class Cliente {
         this.dataNascimentoCliente = dataNascimentoCliente;
         this.email = email;
         this.telefone = telefone;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getCpf() {
@@ -66,6 +78,7 @@ public class Cliente {
 
     public ClienteDto clienteDto() {
         ClienteDto clienteDto = new ClienteDto();
+        clienteDto.setIdCliente(idCliente);
         clienteDto.setCpf(this.cpf);
         clienteDto.setNomeCliente(this.nomeCliente);
         clienteDto.setDataNascimentoCliente(this.dataNascimentoCliente);
