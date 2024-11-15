@@ -1,32 +1,48 @@
 package naiarasantos.com.Entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.OneToMany;
 import naiarasantos.com.Dto.ClienteDto;
 
 @Entity
 public class Cliente {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int idCliente;
+
     private String cpf;
+
     private String nomeCliente;
+
+    @Column (name = "data_nascimento_cliente")
     private LocalDate dataNascimentoCliente;
-    private String email;
-    private String telefone;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "cliente_lance", 
+    joinColumns = @JoinColumn(name = "id_cliente"),
+    inverseJoinColumns = @JoinColumn(name = "id_lance"))
+    private List<Lance> lance;
+
 
     public Cliente() {}
 
     public Cliente(String cpf, String nomeCliente, LocalDate dataNascimentoCliente,
-                    String email, String telefone) {
+                    List<Lance> lance) {
         this.cpf = cpf;
         this.nomeCliente = nomeCliente;
         this.dataNascimentoCliente = dataNascimentoCliente;
-        this.email = email;
-        this.telefone = telefone;
+        this.lance = lance;
+
     }
 
     public int getIdCliente() {
@@ -61,30 +77,22 @@ public class Cliente {
         this.dataNascimentoCliente = dataNascimentoCliente;
     }
 
-    public String getEmail() {
-        return email;
+    public List<Lance> getLance (){
+        return lance;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setLance(List<Lance> lance){
+        this.lance = lance;
     }
 
     public ClienteDto clienteDto() {
         ClienteDto clienteDto = new ClienteDto();
-        clienteDto.setIdCliente(idCliente);
+        clienteDto.setIdCliente(this.idCliente);
         clienteDto.setCpf(this.cpf);
         clienteDto.setNomeCliente(this.nomeCliente);
         clienteDto.setDataNascimentoCliente(this.dataNascimentoCliente);
-        clienteDto.setEmail(this.email);
-        clienteDto.setTelefone(this.telefone);
+        clienteDto.setLance(this.lance);
+
         return clienteDto;
     }
 }

@@ -1,6 +1,10 @@
 package naiarasantos.com.Dto;
 
 import java.time.LocalDate;
+import java.util.List;
+
+import naiarasantos.com.Entity.Banco;
+import naiarasantos.com.Entity.Produto;
 
 public class LeilaoDto {
 
@@ -13,12 +17,15 @@ public class LeilaoDto {
     private String cidadeLeilao;
     private String estadoLeilao;
     private String statusLeilao;
+    private List<Produto> produto;
+    private List<Banco> banco;
 
     public LeilaoDto() {}
 
     public LeilaoDto(int idLeilao, LocalDate dataAberturaLeilao, LocalDate dataEncerramentoLeilao, 
                      LocalDate dataVisitaProduto, String siteLeilao, String enderecoFisicoLeilao, 
-                     String cidadeLeilao, String estadoLeilao, String statusLeilao) {
+                     String cidadeLeilao, String estadoLeilao, String statusLeilao, List<Produto> produto, 
+                     List<Banco> banco) {
         this.idLeilao = idLeilao;
         this.dataAberturaLeilao = dataAberturaLeilao;
         this.dataEncerramentoLeilao = dataEncerramentoLeilao;
@@ -27,7 +34,9 @@ public class LeilaoDto {
         this.enderecoFisicoLeilao = enderecoFisicoLeilao;
         this.cidadeLeilao = cidadeLeilao;
         this.estadoLeilao = estadoLeilao;
-        this.statusLeilao = statusLeilao;   
+        this.statusLeilao = statusLeilao;
+        this.produto = produto;
+        this.banco = banco;   
     }
 
     public int getIdLeilao() {
@@ -100,5 +109,20 @@ public class LeilaoDto {
 
     public void setStatusLeilao(String statusLeilao) {
         this.statusLeilao = statusLeilao;
+    }
+    public List<Produto> getProduto(){
+        return produto;
+    }
+
+    public void setProduto (List<Produto> produto){
+        this.produto = produto;
+    }
+
+    public List<Banco> getBanco(){
+        return banco;
+    }
+
+    public void setBanco(List<Banco>banco){
+        this.banco = banco;
     }
 }

@@ -1,37 +1,44 @@
 package naiarasantos.com.Entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToOne;
-import java.time.LocalDateTime;
+import jakarta.persistence.OneToOne;
+import naiarasantos.com.Dto.LanceDto;
+
 
 @Entity
 public class Lance {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int idLance;
     private Double valorLance;
-    private LocalDateTime dataHoraLance;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
+    @JoinTable(name = "lance_cliente", 
+    joinColumns = @JoinColumn (name = "id_lance"),
+    inverseJoinColumns = @JoinColumn (name = "id_cliente"))
     private Cliente cliente;
 
-    @ManyToOne
-    private Leilao leilao;
 
-    @ManyToOne
+    @OneToOne (fetch = FetchType.EAGER)
+    @JoinTable(name = "lance_produto",
+    joinColumns = @JoinColumn (name = "id_lance"),
+    inverseJoinColumns = @JoinColumn (name = "id_produto"))
     private Produto produto;
 
     public Lance() {}
 
-    public Lance(int idLance, Double valorLance, LocalDateTime dataHoraLance, 
-                Cliente cliente, Leilao leilao, Produto produto) {
+    public Lance(int idLance, Double valorLance, 
+                Cliente cliente, Produto produto) {
         this.idLance = idLance;
         this.valorLance = valorLance;
-        this.dataHoraLance = dataHoraLance;
         this.cliente = cliente;
-        this.leilao = leilao;
         this.produto = produto;
     }
 
@@ -51,13 +58,6 @@ public class Lance {
         this.valorLance = valorLance;
     }
 
-    public LocalDateTime getDataHoraLance() {
-        return dataHoraLance;
-    }
-
-    public void setDataHoraLance(LocalDateTime dataHoraLance) {
-        this.dataHoraLance = dataHoraLance;
-    }
 
     public Cliente getCliente() {
         return cliente;
@@ -67,14 +67,6 @@ public class Lance {
         this.cliente = cliente;
     }
 
-    public Leilao getLeilao() {
-        return leilao;
-    }
-
-    public void setLeilao(Leilao leilao) {
-        this.leilao = leilao;
-    }
-
     public Produto getProduto() {
         return produto;
     }
@@ -82,4 +74,18 @@ public class Lance {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
+
+    public LanceDto lanceDto(){
+        LanceDto lanceDto = new LanceDto();
+        lanceDto.setIdLance(this.idLance);
+        lanceDto.setValorLance(this.valorLance);
+        lanceDto.setCliente(this.cliente);
+        lanceDto.setIdProduto(this.idLance);
+        return lanceDto;
+
+
+    }
+
+
+
 }

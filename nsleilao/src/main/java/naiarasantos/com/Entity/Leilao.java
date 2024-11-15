@@ -1,31 +1,69 @@
 package naiarasantos.com.Entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import naiarasantos.com.Dto.LeilaoDto;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.arjuna.ats.internal.jdbc.drivers.modifiers.list;
 
 @Entity
 public class Leilao {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
+
+    @Column(name = "id_leilao")
     private int idLeilao;
+
+    @Column(name = "data_abertura_leilao")
     private LocalDate dataAberturaLeilao;
+    
+    @Column(name = "data_encerramento_leilao")
     private LocalDate dataEncerramentoLeilao;
+    
+    @Column(name = "data_visita_produto")
     private LocalDate dataVisitaProduto;
+    
+    @Column(name = "site_leilao")
     private String siteLeilao;
+    
+    @Column(name = "endereco_fisico_leilao")
     private String enderecoFisicoLeilao;
+    
+    @Column(name = "cidade_leilao")
     private String cidadeLeilao;
+    
+    @Column(name = "estado_leilao")
     private String estadoLeilao;
+    
+    @Column(name = "status_leilao")
     private String statusLeilao;
 
+    @OneToMany(mappedBy = "produto")
+    private List<Produto> produto = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="leilao_banco",
+    joinColumns = @JoinColumn(name = "id_leilao"),
+    inverseJoinColumns = @JoinColumn (name = "id_banco"))
+    private List<Banco> banco;
 
     public Leilao() {}
 
     public Leilao(int idLeilao, LocalDate dataAberturaLeilao, LocalDate dataEncerramentoLeilao,
                   LocalDate dataVisitaProduto, String siteLeilao, String enderecoFisicoLeilao, 
-                  String cidadeLeilao, String estadoLeilao, String statusLeilao) {
+                  String cidadeLeilao, String estadoLeilao, String statusLeilao, List<Produto> produto, 
+                  List<Banco> banco) {
         this.idLeilao = idLeilao;
         this.dataAberturaLeilao = dataAberturaLeilao;
         this.dataEncerramentoLeilao = dataEncerramentoLeilao;
@@ -35,6 +73,8 @@ public class Leilao {
         this.cidadeLeilao = cidadeLeilao;
         this.estadoLeilao = estadoLeilao;
         this.statusLeilao = statusLeilao;
+        this.produto = produto;
+        this.banco = banco;
     }
 
     public int getIdLeilao() {
@@ -109,7 +149,23 @@ public class Leilao {
         this.statusLeilao = statusLeilao;
     }
 
-  
+    public List<Produto> getProduto(){
+        return produto;
+    }
+
+    public void setProduto (List<Produto> produto){
+        this.produto = produto;
+    }
+
+    public List<Banco> getBanco(){
+        return banco;
+    }
+
+    public void setBanco(List<Banco>banco){
+        this.banco = banco;
+    }
+
+
     public LeilaoDto leilaoDto() {
         LeilaoDto leilaoDto = new LeilaoDto();
         leilaoDto.setIdLeilao(this.idLeilao);
@@ -121,6 +177,8 @@ public class Leilao {
         leilaoDto.setCidadeLeilao(this.cidadeLeilao);
         leilaoDto.setEstadoLeilao(this.estadoLeilao);
         leilaoDto.setStatusLeilao(this.statusLeilao);
+        leilaoDto.setProduto(this.produto);
+        leilaoDto.setBanco(this.banco);
         return leilaoDto;
     }
 }

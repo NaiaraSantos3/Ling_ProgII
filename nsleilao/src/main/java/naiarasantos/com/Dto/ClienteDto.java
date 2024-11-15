@@ -1,24 +1,25 @@
 package naiarasantos.com.Dto;
 
 import java.time.LocalDate;
+import java.util.List;
+
+import naiarasantos.com.Entity.Lance;
 
 public class ClienteDto {
     private int idCliente;
     private String cpf;
     private String nomeCliente;
     private LocalDate dataNascimentoCliente;
-    private String email;
-    private String telefone;
+    private List<Lance> lance;
 
     public ClienteDto() {}
 
-    public ClienteDto(String cpf, String nomeCliente, LocalDate dataNascimentoCliente, 
-    String email, String telefone) {
+    public ClienteDto(String cpf, String nomeCliente, LocalDate dataNascimentoCliente,
+    List<Lance> lance) {
         this.cpf = cpf;
         this.nomeCliente = nomeCliente;
-        this.dataNascimentoCliente = dataNascimentoCliente;
-        this.email = email;
-        this.telefone = telefone;
+        this.lance = lance;
+
     }
 
     public int getidCliente(){
@@ -53,19 +54,13 @@ public class ClienteDto {
         this.dataNascimentoCliente = dataNascimentoCliente;
     }
 
-    public String getEmail() {
-        return email;
+    public List<Lance> getLance (){
+        return lance;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLance(List<Lance> lance){
+        this.lance = lance;
     }
 
-    public String getTelefone() {
-        return telefone;
-    }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
 }

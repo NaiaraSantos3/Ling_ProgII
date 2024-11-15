@@ -2,6 +2,8 @@ package naiarasantos.com.Dto;
 
 import java.time.LocalDateTime;
 
+import naiarasantos.com.Entity.Cliente;
+
 public class LanceDto {
     private int idLance;
     private Double valorLance;
@@ -68,5 +70,10 @@ public class LanceDto {
 
     public void setIdProduto(int idProduto) {
         this.idProduto = idProduto;
+    }
+
+    public void setCliente(Cliente cliente) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setCliente'");
     }
 }
