@@ -8,7 +8,7 @@ import naiarasantos.com.Entity.SubCategoriaProduto;
 
 public class ProdutoDto {
 
-    private int idProduto;
+    private Integer idProduto;
     private String nomeProduto;
     private String tipoProduto;
     private String descricaoProduto;
@@ -21,7 +21,7 @@ public class ProdutoDto {
 
     public ProdutoDto() {}
     
-    public ProdutoDto(int idProduto, String nomeProduto, String tipoProduto, 
+    public ProdutoDto(Integer idProduto, String nomeProduto, String tipoProduto, 
                         String descricaoProduto, Double valorInicialProduto, 
                         SubCategoriaProduto subCategoriaProduto, Leilao leilao, 
                         List<Lance> lance) {
@@ -35,11 +35,11 @@ public class ProdutoDto {
         this.lance = lance;
     }
 
-    public int getIdProduto() {
+    public Integer getIdProduto() {
         return idProduto;
     }
 
-    public void setIdProduto(int idProduto) {
+    public void setIdProduto(Integer idProduto) {
         this.idProduto = idProduto;
     }
 

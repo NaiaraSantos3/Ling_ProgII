@@ -8,7 +8,7 @@ import naiarasantos.com.Entity.Produto;
 
 public class LeilaoDto {
 
-    private int idLeilao;
+    private Integer idLeilao;
     private LocalDate dataAberturaLeilao;
     private LocalDate dataEncerramentoLeilao;
     private LocalDate dataVisitaProduto;
@@ -22,7 +22,7 @@ public class LeilaoDto {
 
     public LeilaoDto() {}
 
-    public LeilaoDto(int idLeilao, LocalDate dataAberturaLeilao, LocalDate dataEncerramentoLeilao, 
+    public LeilaoDto(Integer idLeilao, LocalDate dataAberturaLeilao, LocalDate dataEncerramentoLeilao, 
                      LocalDate dataVisitaProduto, String siteLeilao, String enderecoFisicoLeilao, 
                      String cidadeLeilao, String estadoLeilao, String statusLeilao, List<Produto> produto, 
                      List<Banco> banco) {
@@ -39,11 +39,11 @@ public class LeilaoDto {
         this.banco = banco;   
     }
 
-    public int getIdLeilao() {
+    public Integer getIdLeilao() {
         return idLeilao;
     }
 
-    public void setIdLeilao(int idLeilao) {
+    public void setIdLeilao(Integer idLeilao) {
         this.idLeilao = idLeilao;
     }
 

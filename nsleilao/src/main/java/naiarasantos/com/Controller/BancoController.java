@@ -23,7 +23,7 @@ public class BancoController {
     @Transactional
     public Response createBanco(BancoDto bancoDto) {
         Banco banco = new Banco(bancoDto.getIdBanco(), bancoDto.getNomeBanco(), 
-        bancoDto.getCnpjBanco(), bancoDto.getCodigoBanco());
+        bancoDto.getCnpjBanco(), bancoDto.getCodigoBanco(), bancoDto.getLeilao());
         bancoService.createBanco(banco);
         return Response.status(Response.Status.CREATED).entity(banco.bancoDto()).build();
     }
@@ -37,7 +37,7 @@ public class BancoController {
 
     @GET
     @Path("/{idBanco}")
-    public Response findByIdBanco(@PathParam("idBanco") int idBanco) {
+    public Response findByIdBanco(@PathParam("idBanco") Integer idBanco) {
         Banco banco = bancoService.findByIdBanco(idBanco);
         if (banco == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -48,9 +48,9 @@ public class BancoController {
     @PUT
     @Path("/{idBanco}")
     @Transactional
-    public Response updateBanco(@PathParam("idBanco") int idBanco, BancoDto bancoDto) {
+    public Response updateBanco(@PathParam("idBanco") Integer idBanco, BancoDto bancoDto) {
         Banco banco = new Banco(idBanco, bancoDto.getNomeBanco(), bancoDto.getCnpjBanco(), 
-        bancoDto.getCodigoBanco());
+        bancoDto.getCodigoBanco(), bancoDto.getLeilao());
         Banco updatedBanco = bancoService.updateBanco(banco);
         if (updatedBanco == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -61,7 +61,7 @@ public class BancoController {
     @DELETE
     @Path("/{idBanco}")
     @Transactional
-    public Response deleteBanco(@PathParam("idBanco") int idBanco) {
+    public Response deleteBanco(@PathParam("idBanco") Integer idBanco) {
         bancoService.deleteBanco(idBanco);
         return Response.noContent().build();
     }

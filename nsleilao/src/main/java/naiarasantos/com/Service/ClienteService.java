@@ -30,8 +30,7 @@ public class ClienteService {
         cliente.setCpf(clienteDto.getCpf());
         cliente.setNomeCliente(clienteDto.getNomeCliente());
         cliente.setDataNascimentoCliente(clienteDto.getDataNascimentoCliente());
-        cliente.setEmail(clienteDto.getEmail());
-        cliente.setTelefone(clienteDto.getTelefone());
+        cliente.setLance(clienteDto.getLance());
 
         clienteRepository.persist(cliente);
     }
@@ -42,8 +41,7 @@ public class ClienteService {
         if (cliente != null) {
             cliente.setNomeCliente(clienteDto.getNomeCliente());
             cliente.setDataNascimentoCliente(clienteDto.getDataNascimentoCliente());
-            cliente.setEmail(clienteDto.getEmail());
-            cliente.setTelefone(clienteDto.getTelefone());
+            cliente.setLance(clienteDto.getLance());
         }
     }
 

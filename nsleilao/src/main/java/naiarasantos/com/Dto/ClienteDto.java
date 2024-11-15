@@ -6,7 +6,7 @@ import java.util.List;
 import naiarasantos.com.Entity.Lance;
 
 public class ClienteDto {
-    private int idCliente;
+    private Integer idCliente;
     private String cpf;
     private String nomeCliente;
     private LocalDate dataNascimentoCliente;
@@ -22,11 +22,11 @@ public class ClienteDto {
 
     }
 
-    public int getidCliente(){
+    public Integer getidCliente(){
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(Integer idCliente) {
         this.idCliente = idCliente;
     }
 

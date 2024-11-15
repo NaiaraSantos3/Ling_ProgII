@@ -1,6 +1,7 @@
 package naiarasantos.com.Controller;
 
 import naiarasantos.com.Dto.LeilaoDto;
+import naiarasantos.com.Entity.Leilao;
 import naiarasantos.com.Service.LeilaoService;
 
 import jakarta.inject.Inject;
@@ -19,15 +20,15 @@ public class LeilaoController {
     LeilaoService leilaoService;
 
     @POST
-    public Response cadastrarLeilao(LeilaoDto leilaoDto) {
-        LeilaoDto novoLeilao = leilaoService.cadastrarLeilao(leilaoDto);
-        return Response.status(Response.Status.CREATED).entity(novoLeilao).build();
+    public Response criarLeilao(Leilao leilao) {
+        leilaoService.cadastrarLeilao(leilao);
+        return Response.status(Response.Status.CREATED).entity(leilao).build();
     }
 
     @GET
-    @Path("/{id}")
-    public Response buscarLeilao(@PathParam("id") int id) {
-        LeilaoDto leilao = leilaoService.buscarLeilao(id);
+    @Path("/{idLeilao}")
+    public Response buscarLeilao(@PathParam("idLeilao") Integer idLeilao) {
+        Leilao leilao = leilaoService.buscarLeilao(idLeilao);
         if (leilao == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -40,9 +41,9 @@ public class LeilaoController {
     }
 
     @PUT
-    @Path("/{id}")
-    public Response atualizarLeilao(@PathParam("id") int id, LeilaoDto leilaoDto) {
-        LeilaoDto leilaoAtualizado = leilaoService.atualizarLeilao(id, leilaoDto);
+    @Path("/{idLeilao}")
+    public Response atualizarLeilao(@PathParam("idLeilao") Integer idLeilao, LeilaoDto leilaoDto) {
+        LeilaoDto leilaoAtualizado = leilaoService.atualizarLeilao(idLeilao, leilaoDto);
         if (leilaoAtualizado == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -50,9 +51,9 @@ public class LeilaoController {
     }
 
     @DELETE
-    @Path("/{id}")
-    public Response excluirLeilao(@PathParam("id") int id) {
-        boolean excluido = leilaoService.excluirLeilao(id);
+    @Path("/{idLeilao}")
+    public Response excluirLeilao(@PathParam("idLeilao") Integer idLeilao) {
+        boolean excluido = leilaoService.excluirLeilao(idLeilao);
         if (!excluido) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }

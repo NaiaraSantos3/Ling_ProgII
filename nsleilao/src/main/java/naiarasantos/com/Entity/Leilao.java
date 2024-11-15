@@ -15,15 +15,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.arjuna.ats.internal.jdbc.drivers.modifiers.list;
-
 @Entity
 public class Leilao {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
     @Column(name = "id_leilao")
-    private int idLeilao;
+    private Integer idLeilao;
 
     @Column(name = "data_abertura_leilao")
     private LocalDate dataAberturaLeilao;
@@ -60,7 +58,7 @@ public class Leilao {
 
     public Leilao() {}
 
-    public Leilao(int idLeilao, LocalDate dataAberturaLeilao, LocalDate dataEncerramentoLeilao,
+    public Leilao(Integer idLeilao, LocalDate dataAberturaLeilao, LocalDate dataEncerramentoLeilao,
                   LocalDate dataVisitaProduto, String siteLeilao, String enderecoFisicoLeilao, 
                   String cidadeLeilao, String estadoLeilao, String statusLeilao, List<Produto> produto, 
                   List<Banco> banco) {
@@ -77,11 +75,11 @@ public class Leilao {
         this.banco = banco;
     }
 
-    public int getIdLeilao() {
+    public Integer getIdLeilao() {
         return idLeilao;
     }
 
-    public void setIdLeilao(int idLeilao) {
+    public void setIdLeilao(Integer idLeilao) {
         this.idLeilao = idLeilao;
     }
 

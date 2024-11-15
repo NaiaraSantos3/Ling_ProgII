@@ -14,7 +14,7 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.AUTO)
 
     @Column(name = "id_produto")
-    private int idProduto;
+    private Integer idProduto;
 
     @Column(name = "nome_produto")
     private String nomeProduto;
@@ -51,11 +51,11 @@ public class Produto {
         this.lance = lance;
     }
 
-    public int getIdProduto() {
+    public Integer getIdProduto() {
         return idProduto;
     }
 
-    public void setIdProduto(int idProduto) {
+    public void setIdProduto(Integer idProduto) {
         this.idProduto = idProduto;
     }
 

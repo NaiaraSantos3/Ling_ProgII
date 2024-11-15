@@ -5,7 +5,7 @@ import java.util.List;
 import naiarasantos.com.Entity.Leilao;
 
 public class BancoDto {
-    private int idBanco;
+    private Integer idBanco;
     private String nomeBanco;
     private String cnpjBanco;
     private String codigoBanco;
@@ -13,7 +13,7 @@ public class BancoDto {
 
     public BancoDto() {}
 
-    public BancoDto(int idBanco, String nomeBanco, String cnpjBanco, String codigoBanco, 
+    public BancoDto(Integer idBanco, String nomeBanco, String cnpjBanco, String codigoBanco, 
     List<Leilao> leilao) {
         this.idBanco = idBanco;
         this.nomeBanco = nomeBanco;
@@ -22,11 +22,11 @@ public class BancoDto {
         this.leilao = leilao;
     }
 
-    public int getIdBanco() {
+    public Integer getIdBanco() {
         return idBanco;
     }
 
-    public void setIdBanco(int idBanco) {
+    public void setIdBanco(Integer idBanco) {
         this.idBanco = idBanco;
     }
 

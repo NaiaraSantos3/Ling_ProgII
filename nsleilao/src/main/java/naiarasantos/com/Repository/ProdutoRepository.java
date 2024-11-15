@@ -5,8 +5,8 @@ import java.util.List;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
-import naiarasantos.com.Entity.Produto;
+import naiarasantos.com.Dto.ProdutoDto;
+
 
 @ApplicationScoped
 public class ProdutoRepository {
@@ -14,38 +14,13 @@ public class ProdutoRepository {
     @PersistenceContext
     EntityManager em;
 
-    @Transactional
-    public void CadastraProduto(Produto produto) {
-        em.persist(produto);
-    }
-
-    public Produto BuscaProduto(int id) {
-        return em.find(Produto.class, id);
-    }
-
-    public List<Produto> ExibeProdutos() {
+    public List<ProdutoDto> ExibeProdutos() {
         return em.createQuery("SELECT p FROM Produto p", 
-        Produto.class).getResultList();
+        ProdutoDto.class).getResultList();
     }
-
-    @Transactional
-    public void atualizar(Produto produto) {
-        em.merge(produto); 
-    }
-
-    @Transactional
-    public void Excluir(int id) {
-        Produto produto = BuscaProduto(id);
-        if (produto != null) {
-            em.remove(produto);
-        }
-    }
-
-    public void cadastrarProduto(Produto produto) {
-        throw new UnsupportedOperationException("Método'cadastrarProduto' não implementado");
-    }
-
-    public void atualizarProduto(Produto produtoExistente) {
-        throw new UnsupportedOperationException("Méthodo'atualizarProduto' não implementado");
-    }
+    public ProdutoDto buscarProdutoPorId(Integer idProduto){
+        return em.createQuery("SELECT p FROM Produto p where p.idProduto = : idpProduto", ProdutoDto.class)
+        .setParameter("idProduto", idProduto).getSingleResult();
+    } 
 }
+    

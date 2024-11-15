@@ -11,11 +11,11 @@ public class BancoRepository implements PanacheRepository<Banco> {
         return find("cnpjBanco", cnpj).firstResult();
     }
 
-    public Banco findByIdBanco(int idBanco) {
+    public Banco findByIdBanco(Integer idBanco) {
         throw new UnsupportedOperationException("Método'findByIdBanco'não implementado");
     }
 
-    public void deleteByIdBanco(int idBanco) {
+    public void deleteByIdBanco(Integer idBanco) {
         throw new UnsupportedOperationException("Método'deleteByIdBanco' não implementado");
     }
 }

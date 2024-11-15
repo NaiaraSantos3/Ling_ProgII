@@ -1,5 +1,7 @@
 package naiarasantos.com.Entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -12,11 +14,12 @@ import jakarta.persistence.OneToOne;
 import naiarasantos.com.Dto.LanceDto;
 
 
+
 @Entity
 public class Lance {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idLance;
+    private Integer idLance;
     private Double valorLance;
 
     @ManyToOne (fetch = FetchType.EAGER)
@@ -34,8 +37,8 @@ public class Lance {
 
     public Lance() {}
 
-    public Lance(int idLance, Double valorLance, 
-                Cliente cliente, Produto produto) {
+    public Lance(Integer idLance, Double valorLance, 
+                LocalDateTime localDateTime, Cliente cliente, Leilao leilao, Produto produto) {
         this.idLance = idLance;
         this.valorLance = valorLance;
         this.cliente = cliente;
@@ -84,6 +87,21 @@ public class Lance {
         return lanceDto;
 
 
+    }
+
+    public LocalDateTime getDataHoraLance() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getDataHoraLance'");
+    }
+
+    public LanceDto getLeilao() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getLeilao'");
+    }
+
+    public void setDataHoraLance(LocalDateTime dataHoraLance) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setDataHoraLance'");
     }
 
 

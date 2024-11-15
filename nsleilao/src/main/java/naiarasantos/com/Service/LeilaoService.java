@@ -6,6 +6,7 @@ import naiarasantos.com.Repository.LeilaoRepository;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,44 +14,40 @@ import java.util.stream.Collectors;
 @ApplicationScoped
 public class LeilaoService {
 
+        
+    @Inject
+    EntityManager em;
+
     @Inject
     LeilaoRepository leilaoRepository;
 
     @Transactional
-    public LeilaoDto cadastrarLeilao(LeilaoDto leilaoDto) {
-        Leilao leilao = new Leilao(
-            leilaoDto.getIdLeilao(),
-            leilaoDto.getDataAberturaLeilao(),
-            leilaoDto.getDataEncerramentoLeilao(),
-            leilaoDto.getDataVisitaProduto(),
-            leilaoDto.getSiteLeilao(),
-            leilaoDto.getEnderecoFisicoLeilao(),
-            leilaoDto.getCidadeLeilao(),
-            leilaoDto.getEstadoLeilao(),
-            leilaoDto.getStatusLeilao()
-        );
-        leilaoRepository.cadastrarLeilao(leilao);
+    public LeilaoDto cadastrarLeilao(Leilao leilao) {
+        leilaoRepository.persist(leilao); // Persistência padrão do Panache
         return leilao.leilaoDto();
     }
+    
 
-    public LeilaoDto buscarLeilao(int id) {
-        Leilao leilao = leilaoRepository.buscarLeilao(id);
+
+    public Leilao buscarLeilao(Integer idLeilao) {
+        Leilao leilao = leilaoRepository.findByIdLeilao(idLeilao);
         if (leilao == null) {
-            return null;
+            throw new IllegalArgumentException("Leilão não encontrado para o ID: " + idLeilao);
         }
-        return leilao.leilaoDto();
+        return leilao;
     }
 
     public List<LeilaoDto> listarTodosLeiloes() {
-        List<Leilao> leiloes = leilaoRepository.listarTodosLeiloes();
-        return leiloes.stream().map(Leilao::leilaoDto).collect(Collectors.toList());
+        return leilaoRepository.listAll().stream()
+            .map(Leilao::leilaoDto)
+            .collect(Collectors.toList());
     }
 
     @Transactional
-    public LeilaoDto atualizarLeilao(int id, LeilaoDto leilaoDto) {
-        Leilao leilaoExistente = leilaoRepository.buscarLeilao(id);
+    public LeilaoDto atualizarLeilao(Integer idLeilao, LeilaoDto leilaoDto) {
+        Leilao leilaoExistente = leilaoRepository.findByIdLeilao(idLeilao);
         if (leilaoExistente == null) {
-            return null;
+            throw new IllegalArgumentException("Leilão não encontrado para o ID: " + idLeilao);
         }
 
         leilaoExistente.setDataAberturaLeilao(leilaoDto.getDataAberturaLeilao());
@@ -62,21 +59,21 @@ public class LeilaoService {
         leilaoExistente.setEstadoLeilao(leilaoDto.getEstadoLeilao());
         leilaoExistente.setStatusLeilao(leilaoDto.getStatusLeilao());
 
-        leilaoRepository.atualizarLeilao(leilaoExistente);
-        return leilaoExistente.leilaoDto(); 
+        leilaoRepository.persist(leilaoExistente);
+        return leilaoExistente.leilaoDto();
     }
 
     @Transactional
-    public boolean excluirLeilao(int id) {
-        Leilao leilao = leilaoRepository.buscarLeilao(id);
-        if (leilao == null) {
-            return false;
+    public boolean excluirLeilao(Integer idLeilao) {
+        if(buscarLeilao(idLeilao) != null){
+            em.remove(idLeilao);
+            return true;
+            
         }
-        leilaoRepository.excluirLeilao(id);
-        return true;
+        throw new IllegalArgumentException("Este produto não existe");
+    }
     }
 
-    public Leilao buscarLeilaoPorId(int idLeilao) {
-        throw new UnsupportedOperationException("Método 'buscarLeilaoPorId' não implementado");
-    }
-}
+
+
+

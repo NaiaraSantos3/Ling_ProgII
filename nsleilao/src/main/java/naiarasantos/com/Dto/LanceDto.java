@@ -5,17 +5,17 @@ import java.time.LocalDateTime;
 import naiarasantos.com.Entity.Cliente;
 
 public class LanceDto {
-    private int idLance;
+    private Integer idLance;
     private Double valorLance;
     private LocalDateTime dataHoraLance;
     private String cpfCliente;  
-    private int idLeilao;       
-    private int idProduto;      
+    private Integer idLeilao;       
+    private Integer idProduto;      
 
     public LanceDto(){}
     
-    public LanceDto(int idLance, Double valorLance, LocalDateTime dataHoraLance, 
-                    String cpfCliente, int idLeilao, int idProduto) {
+    public LanceDto(Integer idLance, Double valorLance, LocalDateTime dataHoraLance, 
+                    String cpfCliente, Integer idLeilao, Integer idProduto) {
         this.idLance = idLance;
         this.valorLance = valorLance;
         this.dataHoraLance = dataHoraLance;
@@ -24,11 +24,11 @@ public class LanceDto {
         this.idProduto = idProduto;
     }
 
-    public int getIdLance() {
+    public Integer getIdLance() {
         return idLance;
     }
 
-    public void setIdLance(int idLance) {
+    public void setIdLance(Integer idLance) {
         this.idLance = idLance;
     }
 
@@ -56,19 +56,19 @@ public class LanceDto {
         this.cpfCliente = cpfCliente;
     }
 
-    public int getIdLeilao() {
+    public Integer getIdLeilao() {
         return idLeilao;
     }
 
-    public void setIdLeilao(int idLeilao) {
+    public void setIdLeilao(Integer idLeilao) {
         this.idLeilao = idLeilao;
     }
 
-    public int getIdProduto() {
+    public Integer getIdProduto() {
         return idProduto;
     }
 
-    public void setIdProduto(int idProduto) {
+    public void setIdProduto(Integer idProduto) {
         this.idProduto = idProduto;
     }
 

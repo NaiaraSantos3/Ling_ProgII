@@ -7,7 +7,7 @@ import java.util.List;
 
 @ApplicationScoped
 public class ClienteRepository implements PanacheRepository<Cliente> {
-    
+
     public List<Cliente> findByCpf (String cpf) {
         return list("cpf", cpf);
     }

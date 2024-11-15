@@ -21,8 +21,8 @@ public class LanceController {
     @POST
     public Response cadastrarLance(LanceDto lanceDto) {
         try {
-            LanceDto novoLance = lanceService.cadastrarLance(lanceDto);
-            return Response.status(Response.Status.CREATED).entity(novoLance).build();
+            lanceService.cadastrarLance(lanceDto);
+            return Response.status(Response.Status.CREATED).entity(lanceDto).build();
         } catch (IllegalArgumentException e) {
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
         }
