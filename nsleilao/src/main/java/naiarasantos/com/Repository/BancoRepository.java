@@ -1,21 +1,48 @@
 package naiarasantos.com.Repository;
 
-import io.quarkus.hibernate.orm.panache.PanacheRepository;
-import naiarasantos.com.Entity.Banco;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import naiarasantos.com.Entity.Banco;
+import java.util.List;
 
 @ApplicationScoped
-public class BancoRepository implements PanacheRepository<Banco> {
+public class BancoRepository {
 
+    @Inject
+    EntityManager em;
+
+    // Buscar banco por CNPJ
     public Banco findByCnpj(String cnpj) {
-        return find("cnpjBanco", cnpj).firstResult();
+        return em.createQuery("select b from Banco b where b.cnpj = :cnpj", Banco.class)
+                .setParameter("cnpj", cnpj)
+                .getSingleResult();
     }
 
+    // Buscar banco por ID
     public Banco findByIdBanco(Integer idBanco) {
-        throw new UnsupportedOperationException("Método'findByIdBanco'não implementado");
+        return em.createQuery("select b from Banco b where b.idBanco = :idBanco", Banco.class)
+                .setParameter("idBanco", idBanco)
+                .getSingleResult();
     }
 
-    public void deleteByIdBanco(Integer idBanco) {
-        throw new UnsupportedOperationException("Método'deleteByIdBanco' não implementado");
+    // Listar todos os bancos
+    public List<Banco> listAll() {
+        return em.createQuery("select b from Banco b", Banco.class).getResultList();
+    }
+
+    // Persistir banco
+    public void persist(Banco banco) {
+        em.persist(banco);
+    }
+
+    // Atualizar banco
+    public Banco merge(Banco banco) {
+        return em.merge(banco);
+    }
+
+    // Remover banco
+    public void remove(Banco banco) {
+        em.remove(banco);
     }
 }

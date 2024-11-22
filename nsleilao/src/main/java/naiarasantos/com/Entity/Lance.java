@@ -83,7 +83,7 @@ public class Lance {
         lanceDto.setIdLance(this.idLance);
         lanceDto.setValorLance(this.valorLance);
         lanceDto.setCliente(this.cliente);
-        lanceDto.setIdProduto(this.idLance);
+        lanceDto.setProduto(this.produto);
         return lanceDto;
 
 

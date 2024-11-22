@@ -1,5 +1,6 @@
 package naiarasantos.com.Service;
 
+import naiarasantos.com.Dto.BancoDto;
 import naiarasantos.com.Entity.Banco;
 import naiarasantos.com.Repository.BancoRepository;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -19,28 +20,35 @@ public class BancoService {
         return banco;
     }
 
+
     public List<Banco> findAll() {
         return bancoRepository.listAll();
     }
 
-    public Banco findByIdBanco(int idBanco) {
+    public Banco findByIdBanco(Integer idBanco) {
         return bancoRepository.findByIdBanco(idBanco);
     }
 
     @Transactional
     public Banco updateBanco(Banco banco) {
-        if (bancoRepository.findByIdBanco(banco.getIdBanco()) == null) {
-            return null; 
+        Banco bancoExistente = bancoRepository.findByIdBanco(banco.getIdBanco());
+        if (bancoExistente == null) {
+            return null;
         }
-        return bancoRepository.getEntityManager().merge(banco);
+        return bancoRepository.merge(banco);
     }
 
+    // Deletar banco
     @Transactional
-    public void deleteBanco(int idBanco) {
-        bancoRepository.deleteByIdBanco(idBanco);
+    public void deleteBanco(Integer idBanco) {
+        Banco banco = bancoRepository.findByIdBanco(idBanco);
+        if (banco != null) {
+            bancoRepository.remove(banco);
+        }
     }
 
-    public Banco findByCnpj(String cnpj) {
-        return bancoRepository.findByCnpj(cnpj);
+    public BancoDto findByCnpj(String cnpj) {
+        Banco banco = bancoRepository.findByCnpj(cnpj);
+        return banco != null ? banco.bancoDto() : null;
     }
 }

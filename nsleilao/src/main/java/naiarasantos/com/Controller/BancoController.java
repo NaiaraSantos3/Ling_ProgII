@@ -38,7 +38,7 @@ public class BancoController {
     @GET
     @Path("/{idBanco}")
     public Response findByIdBanco(@PathParam("idBanco") Integer idBanco) {
-        Banco banco = bancoService.findByIdBanco(idBanco);
+        BancoDto banco = bancoService.findByIdBanco(idBanco).bancoDto();
         if (banco == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -69,7 +69,7 @@ public class BancoController {
     @GET
     @Path("/cnpj/{cnpj}")
     public Response findByCnpj(@PathParam("cnpj") String cnpj) {
-        Banco banco = bancoService.findByCnpj(cnpj);
+        BancoDto banco = bancoService.findByCnpj(cnpj);
         if (banco == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }

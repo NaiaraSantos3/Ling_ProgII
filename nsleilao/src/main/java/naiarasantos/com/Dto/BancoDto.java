@@ -60,5 +60,9 @@ public class BancoDto {
 
     public void setLeilao(List<Leilao> leilao){
         this.leilao = leilao;
-    } 
+    }
+
+    public Object bancoDto() {
+        return null;
+    }
 }

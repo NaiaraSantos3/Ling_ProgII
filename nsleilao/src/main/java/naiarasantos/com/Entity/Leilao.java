@@ -47,7 +47,7 @@ public class Leilao {
     @Column(name = "status_leilao")
     private String statusLeilao;
 
-    @OneToMany(mappedBy = "produto")
+    @OneToMany(mappedBy = "nomeProduto")
     private List<Produto> produto = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER)

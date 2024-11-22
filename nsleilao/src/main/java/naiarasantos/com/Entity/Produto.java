@@ -12,7 +12,6 @@ public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     @Column(name = "id_produto")
     private Integer idProduto;
 

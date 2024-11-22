@@ -3,25 +3,27 @@ package naiarasantos.com.Dto;
 import java.time.LocalDateTime;
 
 import naiarasantos.com.Entity.Cliente;
+import naiarasantos.com.Entity.Leilao;
+import naiarasantos.com.Entity.Produto;
 
 public class LanceDto {
     private Integer idLance;
     private Double valorLance;
     private LocalDateTime dataHoraLance;
-    private String cpfCliente;  
-    private Integer idLeilao;       
-    private Integer idProduto;      
+    private Cliente cliente;
+    private Leilao leilao;
+    private Produto produto;
 
     public LanceDto(){}
     
     public LanceDto(Integer idLance, Double valorLance, LocalDateTime dataHoraLance, 
-                    String cpfCliente, Integer idLeilao, Integer idProduto) {
+                    Cliente Cliente, Leilao leilao, Produto produto) {
         this.idLance = idLance;
         this.valorLance = valorLance;
         this.dataHoraLance = dataHoraLance;
-        this.cpfCliente = cpfCliente;
-        this.idLeilao = idLeilao;
-        this.idProduto = idProduto;
+        this.cliente = Cliente;
+        this.leilao = leilao;
+        this.produto = produto;
     }
 
     public Integer getIdLance() {
@@ -48,28 +50,24 @@ public class LanceDto {
         this.dataHoraLance = dataHoraLance;
     }
 
-    public String getCpfCliente() {
-        return cpfCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setCpfCliente(String cpfCliente) {
-        this.cpfCliente = cpfCliente;
+    public Leilao getLeilao() {
+        return leilao;
     }
 
-    public Integer getIdLeilao() {
-        return idLeilao;
+    public void setLeilao(Leilao leilao) {
+        this.leilao = leilao;
     }
 
-    public void setIdLeilao(Integer idLeilao) {
-        this.idLeilao = idLeilao;
+    public Produto getProduto() {
+        return produto;
     }
 
-    public Integer getIdProduto() {
-        return idProduto;
-    }
-
-    public void setIdProduto(Integer idProduto) {
-        this.idProduto = idProduto;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
     public void setCliente(Cliente cliente) {

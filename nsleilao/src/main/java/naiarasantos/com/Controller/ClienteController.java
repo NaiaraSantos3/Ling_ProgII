@@ -9,8 +9,9 @@ import naiarasantos.com.Entity.Cliente;
 import naiarasantos.com.Service.ClienteService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-@Path("/clientes")  
+@Path("/clientes")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ClienteController {
@@ -18,39 +19,51 @@ public class ClienteController {
     @Inject
     ClienteService clienteService;
 
+    // Listar todos os clientes
     @GET
     public List<Cliente> listarTodos() {
-        return clienteService.listarTodos();
+        List<Cliente> clientes = clienteService.findAll();
+        return clientes;
     }
 
+    // Buscar cliente por CPF
     @GET
     @Path("/{cpf}")
     public Response buscarPorCpf(@PathParam("cpf") String cpf) {
-        Cliente cliente = clienteService.buscarPorCpf(cpf);
+        Cliente cliente = clienteService.findByCpf(cpf);
         if (cliente == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();  
-            //Retorna o erro 404 se não encontrado
+            return Response.status(Response.Status.NOT_FOUND).build();  // Retorna 404 se não encontrado
         }
-        return Response.ok(cliente).build();  // Retorna o cliente encontrado
+        return Response.ok(cliente).build();  // Retorna 200 com o cliente encontrado
     }
 
+    // Adicionar novo cliente
     @POST
-    public Response adicionarCliente(ClienteDto clienteDto) {
-        clienteService.adicionarCliente(clienteDto);
-        return Response.status(Response.Status.CREATED).build();  // Retorna o erro 201 após a criação
+    public Response adicionarCliente(ClienteDto cliente) {
+        clienteService.createCliente(cliente);  // Chama o serviço para adicionar o cliente
+        return Response.status(Response.Status.CREATED).build();  // Retorna 201 após a criação
     }
 
+    // Atualizar cliente
     @PUT
     @Path("/{cpf}")
     public Response atualizarCliente(@PathParam("cpf") String cpf, ClienteDto clienteDto) {
-        clienteService.atualizarCliente(cpf, clienteDto);
-        return Response.noContent().build();  // Retorna o erro 204 após a atualização
+        Cliente clienteExistente = clienteService.findByCpf(cpf);
+        if (clienteExistente == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();  // Retorna 404 se não encontrado
+        }
+        ClienteDto novoCliente = clienteService.updateCliente(clienteDto);
     }
 
+    // Remover cliente
     @DELETE
     @Path("/{cpf}")
     public Response removerCliente(@PathParam("cpf") String cpf) {
-        clienteService.removerCliente(cpf);
-        return Response.noContent().build();  //Retorna o erro 204 após a remoção
+        boolean removed = clienteService.deleteCliente(cpf);
+        if (!removed) {
+            return Response.status(Response.Status.NOT_FOUND).build();  // Retorna 404 se não encontrado
+        }
+        return Response.noContent().build();  // Retorna 204 após a remoção
     }
+
 }

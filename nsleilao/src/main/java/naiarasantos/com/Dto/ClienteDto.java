@@ -1,9 +1,9 @@
 package naiarasantos.com.Dto;
 
+import naiarasantos.com.Entity.Lance;
+
 import java.time.LocalDate;
 import java.util.List;
-
-import naiarasantos.com.Entity.Lance;
 
 public class ClienteDto {
     private Integer idCliente;
@@ -12,17 +12,17 @@ public class ClienteDto {
     private LocalDate dataNascimentoCliente;
     private List<Lance> lance;
 
-    public ClienteDto() {}
-
-    public ClienteDto(String cpf, String nomeCliente, LocalDate dataNascimentoCliente,
-    List<Lance> lance) {
+    // Construtor que aceita todos os campos
+    public ClienteDto(Integer idCliente, String cpf, String nomeCliente, LocalDate dataNascimentoCliente, List<Lance> lance) {
+        this.idCliente = idCliente;
         this.cpf = cpf;
         this.nomeCliente = nomeCliente;
+        this.dataNascimentoCliente = dataNascimentoCliente;
         this.lance = lance;
-
     }
 
-    public Integer getidCliente(){
+    // Getters e Setters
+    public Integer getIdCliente() {
         return idCliente;
     }
 
@@ -54,13 +54,11 @@ public class ClienteDto {
         this.dataNascimentoCliente = dataNascimentoCliente;
     }
 
-    public List<Lance> getLance (){
+    public List<Lance> getLance() {
         return lance;
     }
 
-    public void setLance(List<Lance> lance){
+    public void setLance(List<Lance> lance) {
         this.lance = lance;
     }
-
-
 }

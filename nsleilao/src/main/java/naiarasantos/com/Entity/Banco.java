@@ -17,7 +17,7 @@ import naiarasantos.com.Dto.BancoDto;
 public class Banco {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idBanco; 
+    private Integer idBanco;
 
     private String nomeBanco;
 
@@ -34,7 +34,7 @@ public class Banco {
     
     public Banco() {}
 
-    public Banco(int idBanco, String nomeBanco, String cnpjBanco, String codigoBanco, List<Leilao> leilao) {
+    public Banco(Integer idBanco, String nomeBanco, String cnpjBanco, String codigoBanco, List<Leilao> leilao) {
         this.idBanco = idBanco; 
         this.nomeBanco = nomeBanco;
         this.cnpjBanco = cnpjBanco;
@@ -46,7 +46,7 @@ public class Banco {
         return idBanco;
     }
 
-    public void setIdBanco(int idBanco) {
+    public void setIdBanco(Integer idBanco) {
         this.idBanco = idBanco;
     }
 

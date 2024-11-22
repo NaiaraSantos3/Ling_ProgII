@@ -1,12 +1,14 @@
 package naiarasantos.com.Service;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-import jakarta.transaction.Transactional;
+import jakarta.persistence.EntityManager;
 import naiarasantos.com.Dto.ClienteDto;
 import naiarasantos.com.Entity.Cliente;
 import naiarasantos.com.Repository.ClienteRepository;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 @ApplicationScoped
@@ -15,41 +17,43 @@ public class ClienteService {
     @Inject
     ClienteRepository clienteRepository;
 
-    public List<Cliente> listarTodos() {
-        return clienteRepository.listAll();
-    }
+    @Inject
+    EntityManager em;
 
-    public Cliente buscarPorCpf(String cpf) {
-        List<Cliente> clientes = clienteRepository.findByCpf(cpf);
-        return clientes.isEmpty() ? null : clientes.get(0);  
-    }
-
+    // Criar cliente
     @Transactional
-    public void adicionarCliente(ClienteDto clienteDto) {
-        Cliente cliente = new Cliente();
-        cliente.setCpf(clienteDto.getCpf());
-        cliente.setNomeCliente(clienteDto.getNomeCliente());
-        cliente.setDataNascimentoCliente(clienteDto.getDataNascimentoCliente());
-        cliente.setLance(clienteDto.getLance());
-
-        clienteRepository.persist(cliente);
+    public void createCliente(ClienteDto clienteDto) {
+        em.persist(clienteDto);
     }
 
+    // Listar todos os clientes
+    public List<Cliente> findAll() {
+        return clienteRepository.listAll(); // Usando listAll do repositório
+    }
+
+    // Buscar cliente por CPF
+    public Cliente findByCpf(String cpf) {
+        return clienteRepository.findByCpf(cpf); // Busca cliente pelo CPF
+    }
+
+    // Atualizar cliente
     @Transactional
-    public void atualizarCliente(String cpf, ClienteDto clienteDto) {
-        Cliente cliente = buscarPorCpf(cpf);
-        if (cliente != null) {
-            cliente.setNomeCliente(clienteDto.getNomeCliente());
-            cliente.setDataNascimentoCliente(clienteDto.getDataNascimentoCliente());
-            cliente.setLance(clienteDto.getLance());
+    public ClienteDto updateCliente(ClienteDto clienteDto) {
+        Cliente clienteExistente = clienteRepository.findByCpf(clienteDto.getCpf()); // Busca pelo CPF
+        if (clienteExistente == null) {
+            return null; // Se não existir, retorna null
         }
+        return em.merge(clienteDto); // Usando merge do repositório para atualizar
     }
 
+    // Deletar cliente
     @Transactional
-    public void removerCliente(String cpf) {
-        Cliente cliente = buscarPorCpf(cpf);
+    public boolean deleteCliente(String cpf) {
+        Cliente cliente = clienteRepository.findByCpf(cpf); // Busca o cliente pelo CPF
         if (cliente != null) {
-            clienteRepository.delete(cliente);
+            em.remove(cliente); // Removendo o cliente usando o repositório
+            return true;
         }
+        return false;
     }
 }

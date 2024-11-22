@@ -6,7 +6,6 @@ import naiarasantos.com.Repository.LeilaoRepository;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,20 +13,14 @@ import java.util.stream.Collectors;
 @ApplicationScoped
 public class LeilaoService {
 
-        
-    @Inject
-    EntityManager em;
-
     @Inject
     LeilaoRepository leilaoRepository;
 
     @Transactional
     public LeilaoDto cadastrarLeilao(Leilao leilao) {
-        leilaoRepository.persist(leilao); // Persistência padrão do Panache
+        leilaoRepository.persist(leilao);
         return leilao.leilaoDto();
     }
-    
-
 
     public Leilao buscarLeilao(Integer idLeilao) {
         Leilao leilao = leilaoRepository.findByIdLeilao(idLeilao);
@@ -39,8 +32,8 @@ public class LeilaoService {
 
     public List<LeilaoDto> listarTodosLeiloes() {
         return leilaoRepository.listAll().stream()
-            .map(Leilao::leilaoDto)
-            .collect(Collectors.toList());
+                .map(Leilao::leilaoDto)
+                .collect(Collectors.toList());
     }
 
     @Transactional
@@ -50,6 +43,7 @@ public class LeilaoService {
             throw new IllegalArgumentException("Leilão não encontrado para o ID: " + idLeilao);
         }
 
+        // Atualiza os campos
         leilaoExistente.setDataAberturaLeilao(leilaoDto.getDataAberturaLeilao());
         leilaoExistente.setDataEncerramentoLeilao(leilaoDto.getDataEncerramentoLeilao());
         leilaoExistente.setDataVisitaProduto(leilaoDto.getDataVisitaProduto());
@@ -65,15 +59,11 @@ public class LeilaoService {
 
     @Transactional
     public boolean excluirLeilao(Integer idLeilao) {
-        if(buscarLeilao(idLeilao) != null){
-            em.remove(idLeilao);
+        Leilao leilao = buscarLeilao(idLeilao);
+        if (leilao != null) {
+            leilaoRepository.remove(leilao);
             return true;
-            
         }
-        throw new IllegalArgumentException("Este produto não existe");
+        throw new IllegalArgumentException("Leilão não encontrado para o ID: " + idLeilao);
     }
-    }
-
-
-
-
+}
