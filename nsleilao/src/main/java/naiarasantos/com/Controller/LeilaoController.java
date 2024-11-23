@@ -36,8 +36,13 @@ public class LeilaoController {
     }
 
     @GET
-    public List<LeilaoDto> listarTodosLeiloes() {
+    public List<Leilao> listarTodosLeiloes() {
         return leilaoService.listarTodosLeiloes();
+    }
+
+    @GET
+    public List<Leilao> BuscarLeilaoDataInicial() {
+        return leilaoService.BuscarLeilaoDataInicial();
     }
 
     @PUT

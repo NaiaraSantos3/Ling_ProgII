@@ -30,10 +30,12 @@ public class LeilaoService {
         return leilao;
     }
 
-    public List<LeilaoDto> listarTodosLeiloes() {
-        return leilaoRepository.listAll().stream()
-                .map(Leilao::leilaoDto)
-                .collect(Collectors.toList());
+    public List<Leilao> listarTodosLeiloes() {
+        return leilaoRepository.listAll();
+    }
+
+    public List<Leilao> BuscarLeilaoDataInicial() {
+        return leilaoRepository.listAllDataLeilao();
     }
 
     @Transactional

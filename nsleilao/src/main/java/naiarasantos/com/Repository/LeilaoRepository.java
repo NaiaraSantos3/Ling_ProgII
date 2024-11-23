@@ -29,6 +29,10 @@ public class LeilaoRepository {
     public List<Leilao> listAll() {
         return em.createQuery("SELECT l FROM Leilao l", Leilao.class).getResultList();
     }
+    //Buscar Leilão por ordem data de ocorrência
+    public List<Leilao> listAllDataLeilao() {
+        return em.createQuery( "SELECT l FROM Leilao l order by l.dataAberturaLeilao", Leilao.class).getResultList();
+    }
 
     public void remove(Leilao leilao) {
         em.remove(em.contains(leilao) ? leilao : em.merge(leilao)); // Remove entidade
