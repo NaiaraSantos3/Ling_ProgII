@@ -31,35 +31,25 @@ public class LanceService {
     // Cadastrar lance
     @Transactional
     public void cadastrarLance(LanceDto lanceDto) {
-        // Converte o DTO para o objeto Lance
-        Lance lance = fromDto(lanceDto);
-        em.persist(lance);  // Persistir o objeto Lance
+        em.persist(lanceDto);
     }
 
     // Buscar lance por ID
-    public LanceDto buscarLance(Integer idLance) {
-        Lance lance = lanceRepository.findById(idLance);
-        return lance != null ? toDto(lance) : null;
+    public Lance buscarLance(Integer idLance) {
+        return lanceRepository.findByIdLance(idLance);
     }
 
     // Listar todos os lances
-    public List<LanceDto> listarTodosLances() {
-        return lanceRepository.listAll().stream()  // Usa o método correto listAll()
-                .map(this::toDto)  // Converte Lance para LanceDto
-                .collect(Collectors.toList());
+    public List<Lance> listarTodosLances() {
+        return lanceRepository.listAll();
     }
 
     // Atualizar lance
     @Transactional
     public LanceDto atualizarLance(Integer idLance, LanceDto lanceDto) {
-        Lance lanceExistente = lanceRepository.findById(idLance);
-        if (lanceExistente != null) {
-            // Atualiza os campos do lance
-            lanceExistente.setValorLance(lanceDto.getValorLance());
-            lanceExistente.setDataHoraLance(lanceDto.getDataHoraLance());
-            // Atualiza outros campos conforme necessário
-            em.merge(lanceExistente);  // Atualiza o objeto no banco
-            return toDto(lanceExistente);
+        if (buscarLance(idLance) != null) {
+            em.merge(lanceDto);  // Atualiza o objeto no banco
+            return lanceDto;
         }
         throw new IllegalArgumentException("Este lance não existe");
     }
@@ -67,7 +57,7 @@ public class LanceService {
     // Excluir lance
     @Transactional
     public boolean excluirLance(Integer idLance) {
-        Lance lance = lanceRepository.findById(idLance);
+        Lance lance = lanceRepository.findByIdLance(idLance);
         if (lance != null) {
             em.remove(lance);  // Remove o objeto Lance
             return true;
@@ -75,29 +65,29 @@ public class LanceService {
         throw new IllegalArgumentException("Este lance não existe");
     }
 
-    // Converter Lance para LanceDto
-    private LanceDto toDto(Lance lance) {
-        return new LanceDto(
-                lance.getIdLance(),
-                lance.getValorLance(),
-                lance.getDataHoraLance(),
-                lance.getCliente().getIdCliente(),
-                lance.getLeilao().getLeilao(),
-                lance.getProduto().getIdProduto()
-        );
-    }
-
-    // Converter LanceDto para Lance
-    private Lance fromDto(LanceDto lanceDto) {
-        // Assume que o Cliente, Leilao, e Produto já existem e são obtidos
-        // Você pode querer adicionar validações se esses objetos não forem encontrados
-        return new Lance(
-                lanceDto.getIdLance(),
-                lanceDto.getValorLance(),
-                lanceDto.getDataHoraLance(),
-                lanceDto.getCpfCliente(),  // A busca do Cliente
-                lanceDto.getIdLeilao(),  // A busca do Leilao
-                lanceDto.getIdProduto()  // A busca do Produto
-        );
-    }
+//    // Converter Lance para LanceDto
+//    private LanceDto toDto(Lance lance) {
+//        return new LanceDto(
+//                lance.getIdLance(),
+//                lance.getValorLance(),
+//                lance.getDataHoraLance(),
+//                lance.getCliente().getIdCliente(),
+//                lance.getLeilao().getLeilao(),
+//                lance.getProduto().getIdProduto()
+//        );
+//    }
+//
+//    // Converter LanceDto para Lance
+//    private Lance fromDto(LanceDto lanceDto) {
+//        // Assume que o Cliente, Leilao, e Produto já existem e são obtidos
+//        // Você pode querer adicionar validações se esses objetos não forem encontrados
+//        return new Lance(
+//                lanceDto.getIdLance(),
+//                lanceDto.getValorLance(),
+//                lanceDto.getDataHoraLance(),
+//                lanceDto.getCpfCliente(),  // A busca do Cliente
+//                lanceDto.getIdLeilao(),  // A busca do Leilao
+//                lanceDto.getIdProduto()  // A busca do Produto
+//        );
+//    }
 }

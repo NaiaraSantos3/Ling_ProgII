@@ -16,7 +16,6 @@ public class LeilaoDto {
     private String enderecoFisicoLeilao; 
     private String cidadeLeilao;
     private String estadoLeilao;
-    private String statusLeilao;
     private List<Produto> produto;
     private List<Banco> banco;
 
@@ -24,7 +23,7 @@ public class LeilaoDto {
 
     public LeilaoDto(Integer idLeilao, LocalDate dataAberturaLeilao, LocalDate dataEncerramentoLeilao, 
                      LocalDate dataVisitaProduto, String siteLeilao, String enderecoFisicoLeilao, 
-                     String cidadeLeilao, String estadoLeilao, String statusLeilao, List<Produto> produto, 
+                     String cidadeLeilao, String estadoLeilao, List<Produto> produto,
                      List<Banco> banco) {
         this.idLeilao = idLeilao;
         this.dataAberturaLeilao = dataAberturaLeilao;
@@ -34,7 +33,6 @@ public class LeilaoDto {
         this.enderecoFisicoLeilao = enderecoFisicoLeilao;
         this.cidadeLeilao = cidadeLeilao;
         this.estadoLeilao = estadoLeilao;
-        this.statusLeilao = statusLeilao;
         this.produto = produto;
         this.banco = banco;   
     }
@@ -103,13 +101,6 @@ public class LeilaoDto {
         this.estadoLeilao = estadoLeilao;
     }
 
-    public String getStatusLeilao() {
-        return statusLeilao;
-    }
-
-    public void setStatusLeilao(String statusLeilao) {
-        this.statusLeilao = statusLeilao;
-    }
     public List<Produto> getProduto(){
         return produto;
     }

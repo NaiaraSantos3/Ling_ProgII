@@ -24,17 +24,17 @@ public class Produto {
     @Column(name = "valor_inicial_produto")
     private Double valorInicialProduto;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "sub_categoria_produto")
     private SubCategoriaProduto subCategoriaProduto;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_leilao")
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn
     private Leilao leilao;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "produto_lance",
-    joinColumns = @JoinColumn (name = "id_produto"),
-    inverseJoinColumns = @JoinColumn (name = "id_lance"))
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn
     private List<Lance> lance;
 
 

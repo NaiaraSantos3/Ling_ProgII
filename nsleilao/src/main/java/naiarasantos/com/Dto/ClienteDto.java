@@ -12,7 +12,8 @@ public class ClienteDto {
     private LocalDate dataNascimentoCliente;
     private List<Lance> lance;
 
-    // Construtor que aceita todos os campos
+    public ClienteDto(){}
+
     public ClienteDto(Integer idCliente, String cpf, String nomeCliente, LocalDate dataNascimentoCliente, List<Lance> lance) {
         this.idCliente = idCliente;
         this.cpf = cpf;

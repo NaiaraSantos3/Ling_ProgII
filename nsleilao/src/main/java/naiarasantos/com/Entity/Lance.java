@@ -23,16 +23,11 @@ public class Lance {
     private Double valorLance;
 
     @ManyToOne (fetch = FetchType.EAGER)
-    @JoinTable(name = "lance_cliente", 
-    joinColumns = @JoinColumn (name = "id_lance"),
-    inverseJoinColumns = @JoinColumn (name = "id_cliente"))
+    @JoinColumn
     private Cliente cliente;
 
-
     @OneToOne (fetch = FetchType.EAGER)
-    @JoinTable(name = "lance_produto",
-    joinColumns = @JoinColumn (name = "id_lance"),
-    inverseJoinColumns = @JoinColumn (name = "id_produto"))
+    @JoinColumn
     private Produto produto;
 
     public Lance() {}

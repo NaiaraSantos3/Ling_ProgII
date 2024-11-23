@@ -43,12 +43,9 @@ public class Leilao {
     
     @Column(name = "estado_leilao")
     private String estadoLeilao;
-    
-    @Column(name = "status_leilao")
-    private String statusLeilao;
 
-    @OneToMany(mappedBy = "nomeProduto")
-    private List<Produto> produto = new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Produto> produto;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="leilao_banco",
@@ -60,7 +57,7 @@ public class Leilao {
 
     public Leilao(Integer idLeilao, LocalDate dataAberturaLeilao, LocalDate dataEncerramentoLeilao,
                   LocalDate dataVisitaProduto, String siteLeilao, String enderecoFisicoLeilao, 
-                  String cidadeLeilao, String estadoLeilao, String statusLeilao, List<Produto> produto, 
+                  String cidadeLeilao, String estadoLeilao, List<Produto> produto,
                   List<Banco> banco) {
         this.idLeilao = idLeilao;
         this.dataAberturaLeilao = dataAberturaLeilao;
@@ -70,7 +67,6 @@ public class Leilao {
         this.enderecoFisicoLeilao = enderecoFisicoLeilao;
         this.cidadeLeilao = cidadeLeilao;
         this.estadoLeilao = estadoLeilao;
-        this.statusLeilao = statusLeilao;
         this.produto = produto;
         this.banco = banco;
     }
@@ -139,14 +135,6 @@ public class Leilao {
         this.estadoLeilao = estadoLeilao;
     }
 
-    public String getStatusLeilao() {
-        return statusLeilao;
-    }
-
-    public void setStatusLeilao(String statusLeilao) {
-        this.statusLeilao = statusLeilao;
-    }
-
     public List<Produto> getProduto(){
         return produto;
     }
@@ -174,7 +162,6 @@ public class Leilao {
         leilaoDto.setEnderecoFisicoLeilao(this.enderecoFisicoLeilao);
         leilaoDto.setCidadeLeilao(this.cidadeLeilao);
         leilaoDto.setEstadoLeilao(this.estadoLeilao);
-        leilaoDto.setStatusLeilao(this.statusLeilao);
         leilaoDto.setProduto(this.produto);
         leilaoDto.setBanco(this.banco);
         return leilaoDto;

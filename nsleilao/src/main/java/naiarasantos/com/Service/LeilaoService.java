@@ -51,8 +51,6 @@ public class LeilaoService {
         leilaoExistente.setEnderecoFisicoLeilao(leilaoDto.getEnderecoFisicoLeilao());
         leilaoExistente.setCidadeLeilao(leilaoDto.getCidadeLeilao());
         leilaoExistente.setEstadoLeilao(leilaoDto.getEstadoLeilao());
-        leilaoExistente.setStatusLeilao(leilaoDto.getStatusLeilao());
-
         leilaoRepository.persist(leilaoExistente);
         return leilaoExistente.leilaoDto();
     }

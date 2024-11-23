@@ -1,6 +1,7 @@
 package naiarasantos.com.Controller;
 
 import naiarasantos.com.Dto.LanceDto;
+import naiarasantos.com.Entity.Lance;
 import naiarasantos.com.Service.LanceService;
 
 import jakarta.inject.Inject;
@@ -31,7 +32,7 @@ public class LanceController {
     @GET
     @Path("/{id}")
     public Response buscarLance(@PathParam("id") int id) {
-        LanceDto lance = lanceService.buscarLance(id);
+        Lance lance = lanceService.buscarLance(id);
         if (lance == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -39,7 +40,7 @@ public class LanceController {
     }
 
     @GET
-    public List<LanceDto> listarTodosLances() {
+    public List<Lance> listarTodosLances() {
         return lanceService.listarTodosLances();
     }
 

@@ -28,9 +28,6 @@ public class Cliente {
     private LocalDate dataNascimentoCliente;
 
     @OneToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "cliente_lance", 
-    joinColumns = @JoinColumn(name = "id_cliente"),
-    inverseJoinColumns = @JoinColumn(name = "id_lance"))
     private List<Lance> lance;
 
 

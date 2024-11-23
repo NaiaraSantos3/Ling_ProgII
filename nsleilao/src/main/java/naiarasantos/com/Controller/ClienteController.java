@@ -7,9 +7,9 @@ import jakarta.ws.rs.core.Response;
 import naiarasantos.com.Dto.ClienteDto;
 import naiarasantos.com.Entity.Cliente;
 import naiarasantos.com.Service.ClienteService;
+import java.util.stream.Collectors;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Path("/clientes")
 @Produces(MediaType.APPLICATION_JSON)
@@ -22,8 +22,7 @@ public class ClienteController {
     // Listar todos os clientes
     @GET
     public List<Cliente> listarTodos() {
-        List<Cliente> clientes = clienteService.findAll();
-        return clientes;
+        return clienteService.findAll();
     }
 
     // Buscar cliente por CPF
@@ -53,6 +52,7 @@ public class ClienteController {
             return Response.status(Response.Status.NOT_FOUND).build();  // Retorna 404 se não encontrado
         }
         ClienteDto novoCliente = clienteService.updateCliente(clienteDto);
+        return Response.ok(clienteExistente).build();
     }
 
     // Remover cliente
