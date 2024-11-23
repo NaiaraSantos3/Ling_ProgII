@@ -28,8 +28,8 @@ public class Banco {
 
     @ManyToMany (fetch = FetchType.EAGER)
     @JoinTable (name = "banco_leilao",
-    joinColumns = @JoinColumn(name = "id_banco"),
-    inverseJoinColumns = @JoinColumn(name = "id_leilao"))
+    joinColumns = @JoinColumn(name = "idbanco"),
+    inverseJoinColumns = @JoinColumn(name = "idleilao"))
     private List<Leilao> leilao;
     
     public Banco() {}

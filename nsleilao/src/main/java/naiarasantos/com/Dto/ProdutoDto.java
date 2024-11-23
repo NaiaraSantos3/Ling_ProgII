@@ -10,7 +10,6 @@ public class ProdutoDto {
 
     private Integer idProduto;
     private String nomeProduto;
-    private String tipoProduto;
     private String descricaoProduto;
     private Double valorInicialProduto;
     private SubCategoriaProduto subCategoriaProduto;
@@ -21,13 +20,12 @@ public class ProdutoDto {
 
     public ProdutoDto() {}
     
-    public ProdutoDto(Integer idProduto, String nomeProduto, String tipoProduto, 
+    public ProdutoDto(Integer idProduto, String nomeProduto,
                         String descricaoProduto, Double valorInicialProduto, 
                         SubCategoriaProduto subCategoriaProduto, Leilao leilao, 
                         List<Lance> lance) {
         this.idProduto = idProduto;
         this.nomeProduto = nomeProduto;
-        this.tipoProduto = tipoProduto;
         this.descricaoProduto = descricaoProduto;
         this.valorInicialProduto = valorInicialProduto;
         this.subCategoriaProduto = subCategoriaProduto;
@@ -49,14 +47,6 @@ public class ProdutoDto {
 
     public void setNomeProduto(String nomeProduto) {
         this.nomeProduto = nomeProduto;
-    }
-
-    public String getTipoProduto() {
-        return tipoProduto;
-    }
-
-    public void setTipoProduto(String tipoProduto) {
-        this.tipoProduto = tipoProduto;
     }
 
     public String getDescricaoProduto() {

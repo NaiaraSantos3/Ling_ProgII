@@ -7,7 +7,7 @@ import naiarasantos.com.Dto.ProdutoDto;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) 
-@DiscriminatorColumn(name = "tipo_produto", discriminatorType = DiscriminatorType.STRING) 
+@DiscriminatorColumn(name = "produto", discriminatorType = DiscriminatorType.STRING)
 public class Produto {
 
     @Id

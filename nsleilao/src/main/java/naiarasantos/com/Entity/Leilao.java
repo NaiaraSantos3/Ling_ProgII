@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import naiarasantos.com.Dto.LeilaoDto;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,13 +25,13 @@ public class Leilao {
     private Integer idLeilao;
 
     @Column(name = "data_abertura_leilao")
-    private LocalDate dataAberturaLeilao;
+    private LocalDateTime dataAberturaLeilao;
     
     @Column(name = "data_encerramento_leilao")
-    private LocalDate dataEncerramentoLeilao;
+    private LocalDateTime dataEncerramentoLeilao;
     
     @Column(name = "data_visita_produto")
-    private LocalDate dataVisitaProduto;
+    private LocalDateTime dataVisitaProduto;
     
     @Column(name = "site_leilao")
     private String siteLeilao;
@@ -55,8 +56,8 @@ public class Leilao {
 
     public Leilao() {}
 
-    public Leilao(Integer idLeilao, LocalDate dataAberturaLeilao, LocalDate dataEncerramentoLeilao,
-                  LocalDate dataVisitaProduto, String siteLeilao, String enderecoFisicoLeilao, 
+    public Leilao(Integer idLeilao, LocalDateTime dataAberturaLeilao, LocalDateTime dataEncerramentoLeilao,
+                  LocalDateTime dataVisitaProduto, String siteLeilao, String enderecoFisicoLeilao,
                   String cidadeLeilao, String estadoLeilao, List<Produto> produto,
                   List<Banco> banco) {
         this.idLeilao = idLeilao;
@@ -79,27 +80,27 @@ public class Leilao {
         this.idLeilao = idLeilao;
     }
 
-    public LocalDate getDataAberturaLeilao() {
+    public LocalDateTime getDataAberturaLeilao() {
         return dataAberturaLeilao;
     }
 
-    public void setDataAberturaLeilao(LocalDate dataAberturaLeilao) {
+    public void setDataAberturaLeilao(LocalDateTime dataAberturaLeilao) {
         this.dataAberturaLeilao = dataAberturaLeilao;
     }
 
-    public LocalDate getDataEncerramentoLeilao() {
+    public LocalDateTime getDataEncerramentoLeilao() {
         return dataEncerramentoLeilao;
     }
 
-    public void setDataEncerramentoLeilao(LocalDate dataEncerramentoLeilao) {
+    public void setDataEncerramentoLeilao(LocalDateTime dataEncerramentoLeilao) {
         this.dataEncerramentoLeilao = dataEncerramentoLeilao;
     }
 
-    public LocalDate getDataVisitaProduto() {
+    public LocalDateTime getDataVisitaProduto() {
         return dataVisitaProduto;
     }
 
-    public void setDataVisitaProduto(LocalDate dataVisitaProduto) {
+    public void setDataVisitaProduto(LocalDateTime dataVisitaProduto) {
         this.dataVisitaProduto = dataVisitaProduto;
     }
 

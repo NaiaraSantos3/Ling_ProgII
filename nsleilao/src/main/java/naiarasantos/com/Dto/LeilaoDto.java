@@ -1,6 +1,7 @@
 package naiarasantos.com.Dto;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import naiarasantos.com.Entity.Banco;
@@ -9,9 +10,9 @@ import naiarasantos.com.Entity.Produto;
 public class LeilaoDto {
 
     private Integer idLeilao;
-    private LocalDate dataAberturaLeilao;
-    private LocalDate dataEncerramentoLeilao;
-    private LocalDate dataVisitaProduto;
+    private LocalDateTime dataAberturaLeilao;
+    private LocalDateTime dataEncerramentoLeilao;
+    private LocalDateTime dataVisitaProduto;
     private String siteLeilao;
     private String enderecoFisicoLeilao; 
     private String cidadeLeilao;
@@ -21,8 +22,8 @@ public class LeilaoDto {
 
     public LeilaoDto() {}
 
-    public LeilaoDto(Integer idLeilao, LocalDate dataAberturaLeilao, LocalDate dataEncerramentoLeilao, 
-                     LocalDate dataVisitaProduto, String siteLeilao, String enderecoFisicoLeilao, 
+    public LeilaoDto(Integer idLeilao, LocalDateTime dataAberturaLeilao, LocalDateTime dataEncerramentoLeilao,
+                     LocalDateTime dataVisitaProduto, String siteLeilao, String enderecoFisicoLeilao,
                      String cidadeLeilao, String estadoLeilao, List<Produto> produto,
                      List<Banco> banco) {
         this.idLeilao = idLeilao;
@@ -45,27 +46,27 @@ public class LeilaoDto {
         this.idLeilao = idLeilao;
     }
 
-    public LocalDate getDataAberturaLeilao() {
+    public LocalDateTime getDataAberturaLeilao() {
         return dataAberturaLeilao;
     }
 
-    public void setDataAberturaLeilao(LocalDate dataAberturaLeilao) {
+    public void setDataAberturaLeilao(LocalDateTime dataAberturaLeilao) {
         this.dataAberturaLeilao = dataAberturaLeilao;
     }
 
-    public LocalDate getDataEncerramentoLeilao() {
+    public LocalDateTime getDataEncerramentoLeilao() {
         return dataEncerramentoLeilao;
     }
 
-    public void setDataEncerramentoLeilao(LocalDate dataEncerramentoLeilao) {
+    public void setDataEncerramentoLeilao(LocalDateTime dataEncerramentoLeilao) {
         this.dataEncerramentoLeilao = dataEncerramentoLeilao;
     }
 
-    public LocalDate getDataVisitaProduto() {
+    public LocalDateTime getDataVisitaProduto() {
         return dataVisitaProduto;
     }
 
-    public void setDataVisitaProduto(LocalDate dataVisitaProduto) {
+    public void setDataVisitaProduto(LocalDateTime dataVisitaProduto) {
         this.dataVisitaProduto = dataVisitaProduto;
     }
 
