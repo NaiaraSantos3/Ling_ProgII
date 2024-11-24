@@ -1,15 +1,6 @@
 package naiarasantos.com.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 import naiarasantos.com.Dto.LeilaoDto;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -45,14 +36,14 @@ public class Leilao {
     @Column(name = "estado_leilao")
     private String estadoLeilao;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<Produto> produto;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "leilao",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Produto> produto = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="leilao_banco",
     joinColumns = @JoinColumn(name = "id_leilao"),
     inverseJoinColumns = @JoinColumn (name = "id_banco"))
-    private List<Banco> banco;
+    private List<Banco> banco = new ArrayList<>();
 
     public Leilao() {}
 

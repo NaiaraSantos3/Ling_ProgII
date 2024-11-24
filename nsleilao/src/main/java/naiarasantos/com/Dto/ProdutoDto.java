@@ -14,23 +14,18 @@ public class ProdutoDto {
     private Double valorInicialProduto;
     private SubCategoriaProduto subCategoriaProduto;
     private Leilao leilao;
-    private List<Lance> lance;
-
-
 
     public ProdutoDto() {}
     
     public ProdutoDto(Integer idProduto, String nomeProduto,
                         String descricaoProduto, Double valorInicialProduto, 
-                        SubCategoriaProduto subCategoriaProduto, Leilao leilao, 
-                        List<Lance> lance) {
+                        SubCategoriaProduto subCategoriaProduto, Leilao leilao) {
         this.idProduto = idProduto;
         this.nomeProduto = nomeProduto;
         this.descricaoProduto = descricaoProduto;
         this.valorInicialProduto = valorInicialProduto;
         this.subCategoriaProduto = subCategoriaProduto;
         this.leilao = leilao;
-        this.lance = lance;
     }
 
     public Integer getIdProduto() {
@@ -78,13 +73,5 @@ public class ProdutoDto {
 
     public void setLeilao(Leilao leilao){
         this.leilao = leilao;
-    }
-
-    public List<Lance> getLance (){
-        return lance;
-    }
-
-    public void setLance(List<Lance> lance){
-        this.lance = lance;
     }
 }

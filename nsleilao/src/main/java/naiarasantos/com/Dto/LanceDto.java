@@ -11,18 +11,16 @@ public class LanceDto {
     private Double valorLance;
     private LocalDateTime dataHoraLance;
     private Cliente cliente;
-    private Leilao leilao;
     private Produto produto;
 
     public LanceDto(){}
     
     public LanceDto(Integer idLance, Double valorLance, LocalDateTime dataHoraLance, 
-                    Cliente Cliente, Leilao leilao, Produto produto) {
+                    Cliente Cliente, Produto produto) {
         this.idLance = idLance;
         this.valorLance = valorLance;
         this.dataHoraLance = dataHoraLance;
         this.cliente = Cliente;
-        this.leilao = leilao;
         this.produto = produto;
     }
 
@@ -52,14 +50,6 @@ public class LanceDto {
 
     public Cliente getCliente() {
         return cliente;
-    }
-
-    public Leilao getLeilao() {
-        return leilao;
-    }
-
-    public void setLeilao(Leilao leilao) {
-        this.leilao = leilao;
     }
 
     public Produto getProduto() {

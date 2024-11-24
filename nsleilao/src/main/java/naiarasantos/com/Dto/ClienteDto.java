@@ -10,16 +10,14 @@ public class ClienteDto {
     private String cpf;
     private String nomeCliente;
     private LocalDate dataNascimentoCliente;
-    private List<Lance> lance;
 
     public ClienteDto(){}
 
-    public ClienteDto(Integer idCliente, String cpf, String nomeCliente, LocalDate dataNascimentoCliente, List<Lance> lance) {
+    public ClienteDto(Integer idCliente, String cpf, String nomeCliente, LocalDate dataNascimentoCliente) {
         this.idCliente = idCliente;
         this.cpf = cpf;
         this.nomeCliente = nomeCliente;
         this.dataNascimentoCliente = dataNascimentoCliente;
-        this.lance = lance;
     }
 
     // Getters e Setters
@@ -55,11 +53,4 @@ public class ClienteDto {
         this.dataNascimentoCliente = dataNascimentoCliente;
     }
 
-    public List<Lance> getLance() {
-        return lance;
-    }
-
-    public void setLance(List<Lance> lance) {
-        this.lance = lance;
-    }
 }

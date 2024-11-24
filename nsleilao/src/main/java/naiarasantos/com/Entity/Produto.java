@@ -7,7 +7,7 @@ import naiarasantos.com.Dto.ProdutoDto;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) 
-@DiscriminatorColumn(name = "produto", discriminatorType = DiscriminatorType.STRING)
+//@DiscriminatorColumn(name = "produto", discriminatorType = DiscriminatorType.STRING)
 public class Produto {
 
     @Id
@@ -25,10 +25,10 @@ public class Produto {
     private Double valorInicialProduto;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "sub_categoria_produto")
+    @Column(name = "sub_categoria_produto",nullable = false, columnDefinition = "VARCHAR (255)")
     private SubCategoriaProduto subCategoriaProduto;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn
     private Leilao leilao;
 
@@ -78,16 +78,8 @@ public class Produto {
         return valorInicialProduto;
     }
 
-    public void setValorInicialProduto(Double valorInicialProduto) {
-        this.valorInicialProduto = valorInicialProduto;
-    }
-
     public SubCategoriaProduto getSubCategoriaProduto(){
         return subCategoriaProduto;
-    }
-
-    public void setSubCategoriaProduto(SubCategoriaProduto subCategoriaProduto){
-        this.subCategoriaProduto = subCategoriaProduto;
     }
 
     public Leilao getLeilao(){
@@ -114,7 +106,6 @@ public class Produto {
             produtoDto.setDescricaoProduto(this.descricaoProduto);
             produtoDto.setSubCategoriaProduto(this.subCategoriaProduto);
             produtoDto.setLeilao(this.leilao);
-            produtoDto.setLance(this.lance);
             return produtoDto;
     }
 }

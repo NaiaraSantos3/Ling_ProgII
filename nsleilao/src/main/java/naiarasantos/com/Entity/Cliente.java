@@ -3,15 +3,7 @@ package naiarasantos.com.Entity;
 import java.time.LocalDate;
 import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import naiarasantos.com.Dto.ClienteDto;
 
 @Entity
@@ -27,7 +19,7 @@ public class Cliente {
     @Column (name = "data_nascimento_cliente")
     private LocalDate dataNascimentoCliente;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy ="cliente",cascade = CascadeType.ALL)
     private List<Lance> lance;
 
 
@@ -88,7 +80,6 @@ public class Cliente {
         clienteDto.setCpf(this.cpf);
         clienteDto.setNomeCliente(this.nomeCliente);
         clienteDto.setDataNascimentoCliente(this.dataNascimentoCliente);
-        clienteDto.setLance(this.lance);
 
         return clienteDto;
     }
