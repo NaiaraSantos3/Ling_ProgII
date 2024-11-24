@@ -1,5 +1,6 @@
 package naiarasantos.com.Service;
 
+import naiarasantos.com.Dto.DetalhesLeilaoDTO;
 import naiarasantos.com.Dto.LeilaoDto;
 import naiarasantos.com.Entity.Leilao;
 import naiarasantos.com.Repository.LeilaoRepository;
@@ -65,5 +66,9 @@ public class LeilaoService {
             return true;
         }
         throw new IllegalArgumentException("Leilão não encontrado para o ID: " + idLeilao);
+    }
+
+    public DetalhesLeilaoDTO DetalhesLeilao(Integer idLeilao) {
+        return leilaoRepository.detalhesLeilaoDTO(idLeilao);
     }
 }

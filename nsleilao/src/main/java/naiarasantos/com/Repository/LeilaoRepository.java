@@ -7,6 +7,7 @@ import java.util.List;
 
 import naiarasantos.com.Dto.DetalhesLeilaoDTO;
 import naiarasantos.com.Entity.Leilao;
+import naiarasantos.com.Entity.Produto;
 
 @ApplicationScoped
 public class LeilaoRepository {
@@ -29,14 +30,26 @@ public class LeilaoRepository {
     }
 
     public DetalhesLeilaoDTO detalhesLeilaoDTO(Integer idLeilao) {
-        String query = "SELECT l.idLeilao, l.dataAberturaLeilao, l.dataEncerramentoLeilao, l.dataVisitaProduto, l.siteLeilao, l.enderecoFisicoLeilao, l.cidadeLeilao, l.estadoLeilao, " +
-                "COUNT(p.idProduto), b.nomeBanco FROM Leilao l LEFT JOIN l.banco b LEFT JOIN l.produto p WHERE l.idLeilao = :idLeilao GROUP BY l.idLeilao, l.dataAberturaLeilao, l.dataEncerramentoLeilao, " +
-                "l.dataVisitaProduto, l.siteLeilao, l.enderecoFisicoLeilao, " +
-                "l.cidadeLeilao, l.estadoLeilao, b.nomeBanco order by p.nomeProduto";
+        String produtoQuery = "SELECT p.nomeProduto FROM Produto p WHERE p.leilao = :idLeilao";
+        List<String> produto = em.createQuery(produtoQuery, String.class)
+                .setParameter("idLeilao", idLeilao)
+                .getResultList();
 
-        return em.createQuery(query, DetalhesLeilaoDTO.class)
+        String bancosQuery = "SELECT b.nomeBanco FROM Banco b WHERE b.leilao = :idLeilao";
+        List<String> banco = em.createQuery(bancosQuery, String.class)
+                .setParameter("idLeilao", idLeilao)
+                .getResultList();
+
+        String leilaoQuery = "SELECT l FROM Leilao l WHERE l.idLeilao = :idLeilao";
+        Leilao leilao = em.createQuery(leilaoQuery, Leilao.class)
                 .setParameter("idLeilao", idLeilao)
                 .getSingleResult();
+
+        String countQuery = "SELECT COUNT(p.id) FROM Produto p WHERE p.leilao = :idLeilao";
+        Long quantidadeDeProdutos = em.createQuery(countQuery, Long.class)
+                .setParameter("idLeilao", idLeilao)
+                .getSingleResult();
+        return new DetalhesLeilaoDTO(produto, banco, leilao, quantidadeDeProdutos.intValue());
     }
 
 
@@ -53,13 +66,3 @@ public class LeilaoRepository {
     }
 }
 
-
-//
-//private Integer idLeilao;
-//private LocalDate dataAberturaLeilao;
-//private LocalDate dataEncerramentoLeilao;
-//private LocalDate dataVisitaProduto;
-//private String siteLeilao;
-//private String enderecoFisicoLeilao;
-//private String cidadeLeilao;
-//private String estadoLeilao;

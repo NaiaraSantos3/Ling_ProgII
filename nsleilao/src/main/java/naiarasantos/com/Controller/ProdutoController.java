@@ -26,13 +26,23 @@ public class ProdutoController {
     }
 
     @GET
-    @Path("/{idProduto}")
-    public Response buscarProduto(@PathParam("idProduto") int idProduto) {
-        ProdutoDto produto = produtoService.buscarProduto(idProduto);
+    @Path("ProdutoPorId/{idProduto}")
+    public Response buscarProdutoPorId(@PathParam("idProduto") int idProduto) {
+        ProdutoDto produto = produtoService.buscarProdutoPorId(idProduto);
         if (produto == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         return Response.ok(produto).build();
+    }
+
+    @GET
+    @Path("/produto/{idProduto}")
+    public Response buscarProdutoPorIdLeilao(@PathParam("idLeilao") Long idLeilao,@PathParam("idProduto") Long idProduto) {
+        Produto produto = produtoService.buscarProdutoPorIdLeilao(idLeilao, idProduto);
+        if (produto == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        return Response.ok(produto.toProdutoDto()).build();
     }
 
     @GET
@@ -45,7 +55,7 @@ public class ProdutoController {
     @Path("/{idProduto}")
     @Transactional
     public Response atualizarProduto(@PathParam("idProduto") Integer idProduto, ProdutoDto produtoDto) {
-        ProdutoDto produtoExistente = produtoService.buscarProduto(idProduto);
+        ProdutoDto produtoExistente = produtoService.buscarProdutoPorId(idProduto);
         if (produtoExistente == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -57,7 +67,7 @@ public class ProdutoController {
     @Path("/{idProduto}")
     @Transactional
     public Response excluirProduto(@PathParam("idProduto") int idProduto) {
-        ProdutoDto produto = produtoService.buscarProduto(idProduto);
+        ProdutoDto produto = produtoService.buscarProdutoPorId(idProduto);
         if (produto == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }

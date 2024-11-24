@@ -1,6 +1,7 @@
 package naiarasantos.com.Service;
 
 import naiarasantos.com.Dto.ProdutoDto;
+import naiarasantos.com.Entity.Produto;
 import naiarasantos.com.Repository.ProdutoRepository;
 
 import jakarta.enterprise.context.ApplicationScoped;
@@ -23,9 +24,13 @@ public class ProdutoService {
         em.persist(produtodDto);
     }
 
-    public ProdutoDto buscarProduto(Integer idProduto) {
+    public ProdutoDto buscarProdutoPorId(Integer idProduto) {
         return produtoRepository.buscarProdutoPorId(idProduto);
 
+    }
+
+    public Produto buscarProdutoPorIdLeilao(Long idLeilao, Long idProduto) {
+        return produtoRepository.buscarProdutoPorIdLeilao(idLeilao, idProduto);
     }
 
     public List<ProdutoDto> listarTodosProdutos() {
@@ -34,7 +39,7 @@ public class ProdutoService {
 
     @Transactional
     public ProdutoDto atualizarProduto(Integer idProduto, ProdutoDto produtoDto) {
-        if(buscarProduto(idProduto) != null){
+        if(buscarProdutoPorId(idProduto) != null){
             em.merge(produtoDto);
             return produtoDto;
         }
@@ -43,7 +48,7 @@ public class ProdutoService {
 
     @Transactional
     public boolean excluirProduto(Integer idProduto) {
-        if(buscarProduto(idProduto) != null){
+        if(buscarProdutoPorId(idProduto) != null){
             em.remove(idProduto);
             return true;
             

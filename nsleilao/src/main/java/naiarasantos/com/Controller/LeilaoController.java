@@ -1,5 +1,6 @@
 package naiarasantos.com.Controller;
 
+import naiarasantos.com.Dto.DetalhesLeilaoDTO;
 import naiarasantos.com.Dto.LeilaoDto;
 import naiarasantos.com.Entity.Leilao;
 import naiarasantos.com.Service.LeilaoService;
@@ -33,6 +34,12 @@ public class LeilaoController {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         return Response.ok(leilao).build();
+    }
+
+    @GET
+    @Path("/detalhesLeilao/{idLeilao}")
+    public DetalhesLeilaoDTO detalhesLeilao(@PathParam("idLeilao") Integer idLeilao) {
+        return leilaoService.DetalhesLeilao(idLeilao);
     }
 
     @GET
