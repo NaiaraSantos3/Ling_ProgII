@@ -77,21 +77,4 @@ public class Lance {
 
     }
 
-    public LocalDateTime getDataHoraLance() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getDataHoraLance'");
-    }
-
-    public LanceDto getLeilao() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getLeilao'");
-    }
-
-    public void setDataHoraLance(LocalDateTime dataHoraLance) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setDataHoraLance'");
-    }
-
-
-
 }

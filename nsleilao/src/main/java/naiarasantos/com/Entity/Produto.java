@@ -2,6 +2,8 @@ package naiarasantos.com.Entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import naiarasantos.com.Dto.ProdutoDto;
 
@@ -30,24 +32,18 @@ public class Produto {
 
     @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn
+    @JsonBackReference
     private Leilao leilao;
-
-
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn
-    private List<Lance> lance;
-
 
     public Produto() {}
 
     public Produto(String nomeProduto, String descricaoProduto, Double valorInicialProduto,
-                    SubCategoriaProduto subCategoriaProduto, Leilao leilao, List<Lance> lance) {
+                    SubCategoriaProduto subCategoriaProduto, Leilao leilao) {
         this.nomeProduto = nomeProduto;
         this.descricaoProduto = descricaoProduto;
         this.valorInicialProduto = valorInicialProduto;
         this.subCategoriaProduto = subCategoriaProduto;
         this.leilao = leilao;
-        this.lance = lance;
     }
 
     public Integer getIdProduto() {
@@ -88,14 +84,6 @@ public class Produto {
 
     public void setLeilao(Leilao leilao){
         this.leilao = leilao;
-    }
-
-    public List<Lance> getLance (){
-        return lance;
-    }
-
-    public void setLance(List<Lance> lance){
-        this.lance = lance;
     }
 
 

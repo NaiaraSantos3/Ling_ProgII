@@ -2,6 +2,7 @@ package naiarasantos.com.Entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -30,6 +31,7 @@ public class Banco {
     @JoinTable (name = "banco_leilao",
     joinColumns = @JoinColumn(name = "idbanco"),
     inverseJoinColumns = @JoinColumn(name = "idleilao"))
+    @JsonBackReference
     private List<Leilao> leilao;
     
     public Banco() {}
@@ -88,7 +90,6 @@ public class Banco {
         bancoDto.setNomeBanco(this.nomeBanco);
         bancoDto.setCnpjBanco(this.cnpjBanco);
         bancoDto.setCodigoBanco(this.codigoBanco);
-        bancoDto.setLeilao(this.leilao);
         return bancoDto;
     }
 }

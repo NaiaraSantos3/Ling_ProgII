@@ -3,6 +3,7 @@ package naiarasantos.com.Entity;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import naiarasantos.com.Dto.ClienteDto;
 
@@ -20,6 +21,7 @@ public class Cliente {
     private LocalDate dataNascimentoCliente;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy ="cliente",cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Lance> lance;
 
 

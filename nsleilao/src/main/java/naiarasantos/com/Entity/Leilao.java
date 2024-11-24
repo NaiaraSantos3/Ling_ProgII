@@ -1,5 +1,6 @@
 package naiarasantos.com.Entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import naiarasantos.com.Dto.LeilaoDto;
 import java.time.LocalDate;
@@ -17,32 +18,34 @@ public class Leilao {
 
     @Column(name = "data_abertura_leilao")
     private LocalDateTime dataAberturaLeilao;
-    
+
     @Column(name = "data_encerramento_leilao")
     private LocalDateTime dataEncerramentoLeilao;
-    
+
     @Column(name = "data_visita_produto")
     private LocalDateTime dataVisitaProduto;
-    
+
     @Column(name = "site_leilao")
     private String siteLeilao;
-    
+
     @Column(name = "endereco_fisico_leilao")
     private String enderecoFisicoLeilao;
-    
+
     @Column(name = "cidade_leilao")
     private String cidadeLeilao;
-    
+
     @Column(name = "estado_leilao")
     private String estadoLeilao;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "leilao",cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Produto> produto = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="leilao_banco",
     joinColumns = @JoinColumn(name = "id_leilao"),
     inverseJoinColumns = @JoinColumn (name = "id_banco"))
+    @JsonManagedReference
     private List<Banco> banco = new ArrayList<>();
 
     public Leilao() {}

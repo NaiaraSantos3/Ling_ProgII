@@ -30,12 +30,11 @@ INSERT INTO produto (id_produto, leilao_id_leilao, valor_inicial_produto, descri
     (9, 2, 15000.0, 'Veículo utilitário Fiat Fiorino', 'Fiat Fiorino', 'UTILITARIO');
 
 -- Inserindo dados na tabela LANCE
-INSERT INTO lance (cliente_idcliente, idlance, lance_id_produto, produto_id_produto, valorlance)
-VALUES
-    (1, 1, 1, 1, 550.0),  -- Cliente 1 (João Silva) deu lance de 550 no Produto 1
-    (2, 2, 2, 2, 1200.0), -- Cliente 2 (Maria Oliveira) deu lance de 1200 no Produto 2
-    (3, 3, 3, 3, 800.0),  -- Cliente 3 (Carlos Pereira) deu lance de 800 no Produto 3
-    (4, 4, 4, 4, 300.0);  -- Cliente 4 (Ana Souza) deu lance de 300 no Produto 4
+INSERT INTO lance (cliente_idcliente, idlance, produto_id_produto, valorlance)VALUES
+    (1, 1, 1, 550.0),  -- Cliente 1 (João Silva) deu lance de 550 no Produto 1
+    (2, 2,  2, 1200.0), -- Cliente 2 (Maria Oliveira) deu lance de 1200 no Produto 2
+    (3, 3,  3, 800.0),  -- Cliente 3 (Carlos Pereira) deu lance de 800 no Produto 3
+    (4, 4, 4, 300.0);  -- Cliente 4 (Ana Souza) deu lance de 300 no Produto 4
 
 
 -- Inserindo dados na tabela BANCO_LEILAO
