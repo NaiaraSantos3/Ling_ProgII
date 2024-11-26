@@ -1,6 +1,6 @@
 # nsleilao
 
-Este projeto utiliza o Quarkus, o Framework Java Supersônico e Subatômico.
+Este projeto utiliza o Quarkus, um Framework Java.
 
 Se você deseja saber mais sobre o Quarkus, por favor, visite o site oficial: <https://quarkus.io/>.
 
