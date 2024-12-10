@@ -1,99 +1,62 @@
 package naiarasantos.com.Entity;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import naiarasantos.com.Dto.ProdutoDto;
+import naiarasantos.com.Entity.Leilao;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE) 
-//@DiscriminatorColumn(name = "produto", discriminatorType = DiscriminatorType.STRING)
+@Table(name = "produto")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_produto", discriminatorType = DiscriminatorType.STRING)
 public class Produto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_produto")
     private Integer idProduto;
 
-    @Column(name = "nome_produto")
+    @Column(name = "nome_produto", nullable = false, length = 100)
     private String nomeProduto;
 
     @Column(name = "descricao_produto")
     private String descricaoProduto;
 
-    @Column(name = "valor_inicial_produto")
+    @Column(name = "valor_inicial_produto", nullable = false)
     private Double valorInicialProduto;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "sub_categoria_produto",nullable = false, columnDefinition = "VARCHAR (255)")
-    private SubCategoriaProduto subCategoriaProduto;
-
-    @ManyToOne (fetch = FetchType.EAGER)
-    @JoinColumn
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_leilao", nullable = false)
     @JsonBackReference
     private Leilao leilao;
 
-    public Produto() {}
+    @Column(name = "produto_vendido", nullable = false)
+    private boolean produtoVendido;
 
+    public Produto() {
+    }
+
+    // Construtor com parâmetros
     public Produto(String nomeProduto, String descricaoProduto, Double valorInicialProduto,
-                    SubCategoriaProduto subCategoriaProduto, Leilao leilao) {
+                   Leilao leilao, boolean produtoVendido) {
         this.nomeProduto = nomeProduto;
         this.descricaoProduto = descricaoProduto;
         this.valorInicialProduto = valorInicialProduto;
-        this.subCategoriaProduto = subCategoriaProduto;
         this.leilao = leilao;
+        this.produtoVendido = produtoVendido;
     }
 
-    public Integer getIdProduto() {
-        return idProduto;
-    }
+    // Lombok já gera getters, setters e o construtor
 
-    public void setIdProduto(Integer idProduto) {
-        this.idProduto = idProduto;
-    }
-
-    public String getNomeProduto() {
-        return nomeProduto;
-    }
-
-    public void setNomeProduto(String nomeProduto) {
-        this.nomeProduto = nomeProduto;
-    }
-
-    public String getDescricaoProduto() {
-        return descricaoProduto;
-    }
-
-    public void setDescricaoProduto(String descricaoProduto) {
-        this.descricaoProduto = descricaoProduto;
-    }
-
-    public Double getValorInicialProduto() {
-        return valorInicialProduto;
-    }
-
-    public SubCategoriaProduto getSubCategoriaProduto(){
-        return subCategoriaProduto;
-    }
-
-    public Leilao getLeilao(){
-        return leilao;
-    }
-
-    public void setLeilao(Leilao leilao){
-        this.leilao = leilao;
-    }
-
-
+    // Método para converter em ProdutoDto
     public ProdutoDto toProdutoDto() {
-            ProdutoDto produtoDto = new ProdutoDto();
-            produtoDto.setIdProduto(this.idProduto);
-            produtoDto.setNomeProduto(this.nomeProduto);
-            produtoDto.setDescricaoProduto(this.descricaoProduto);
-            produtoDto.setSubCategoriaProduto(this.subCategoriaProduto);
-            produtoDto.setLeilao(this.leilao);
-            return produtoDto;
+        ProdutoDto produtoDto = new ProdutoDto();
+        produtoDto.setIdProduto(this.idProduto);
+        produtoDto.setNomeProduto(this.nomeProduto);
+        produtoDto.setDescricaoProduto(this.descricaoProduto);
+        produtoDto.setLeilao(this.leilao);
+        produtoDto.setValorInicialProduto(this.valorInicialProduto);
+        produtoDto.setProdutoVendido(this.produtoVendido);
+        return produtoDto;
     }
 }

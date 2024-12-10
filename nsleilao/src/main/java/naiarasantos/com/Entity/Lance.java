@@ -7,6 +7,7 @@ import naiarasantos.com.Dto.LanceDto;
 
 
 
+
 @Entity
 @Table(name = "Lance")
 public class Lance {
