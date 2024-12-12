@@ -27,7 +27,7 @@ public class Notebook extends Produto {
     @Override
     public ProdutoDto toProdutoDto() {
         ProdutoDto produtoDto = super.toProdutoDto();
-        produtoDto.setConfiguracaoNotebook(this.configuracaoNotebook); // Adiciona este campo no ProdutoDto
+        produtoDto.setConfiguracaoNotebook(this.configuracaoNotebook);
         return produtoDto;
     }
 

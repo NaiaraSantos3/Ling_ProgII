@@ -31,7 +31,7 @@ public class Switch extends Produto {
     @Override
     public ProdutoDto toProdutoDto() {
         ProdutoDto produtoDto = super.toProdutoDto();
-        produtoDto.setTipoSwitch(this.numeroPortas != null ? numeroPortas + " portas" : null); // Formata o atributo específico
+        produtoDto.setTipoSwitch(this.numeroPortas != null ? numeroPortas + " portas" : null);
         return produtoDto;
     }
 

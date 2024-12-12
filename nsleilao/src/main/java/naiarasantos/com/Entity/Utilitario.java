@@ -27,7 +27,7 @@ public class Utilitario extends Produto {
     @Override
     public ProdutoDto toProdutoDto() {
         ProdutoDto produtoDto = super.toProdutoDto();
-        produtoDto.setTipoUtilitario(this.tipoUtilitario); // Adiciona este campo no ProdutoDto
+        produtoDto.setTipoUtilitario(this.tipoUtilitario);
         return produtoDto;
     }
 

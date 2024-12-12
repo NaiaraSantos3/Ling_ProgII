@@ -30,7 +30,7 @@ public class Roteador extends Produto {
     @Override
     public ProdutoDto toProdutoDto() {
         ProdutoDto produtoDto = super.toProdutoDto();
-        produtoDto.setTipoRoteador(this.frequenciaRoteador); // Adiciona o atributo específico ao DTO
+        produtoDto.setTipoRoteador(this.frequenciaRoteador);
         return produtoDto;
     }
 

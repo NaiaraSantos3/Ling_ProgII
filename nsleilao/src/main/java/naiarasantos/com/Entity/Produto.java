@@ -36,7 +36,6 @@ public class Produto {
     public Produto() {
     }
 
-    // Construtor com parâmetros
     public Produto(String nomeProduto, String descricaoProduto, Double valorInicialProduto,
                    Leilao leilao, boolean produtoVendido) {
         this.nomeProduto = nomeProduto;
@@ -46,9 +45,7 @@ public class Produto {
         this.produtoVendido = produtoVendido;
     }
 
-    // Lombok já gera getters, setters e o construtor
 
-    // Método para converter em ProdutoDto
     public ProdutoDto toProdutoDto() {
         ProdutoDto produtoDto = new ProdutoDto();
         produtoDto.setIdProduto(this.idProduto);
